@@ -9,28 +9,51 @@
         <link rel="stylesheet" href="style/style-color.css">
         <link rel="stylesheet" href="style/style-size.css">
         <link rel="stylesheet" href="style/style-text.css">
+        <link rel="stylesheet" href="style/style-border.css">
         <script src="script/angular.min.js"></script> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="script/script.js"></script>
     </head>
-    <body class="" >
-        <div class="color-6 text-color-1 nav-size">
-            <div class="row">
-                <div class="col-sm-8">
-                    <ul class=" nav-pills list-none menu-size menu-color menu-text">
-                        <li class="my-list-not-selected my-list-selected"><a href="#0">Menu 0</a></li>
-                        <li class="my-list-not-selected"><a href="#1">Menu 1</a></li>
-                        <li class="my-list-not-selected"><a href="#2">Menu 2</a></li>
-                        <li class="my-list-not-selected"><a href="#3">Menu 3</a></li>
-                    </ul>
+    <body >
+        <div id="cloud-container">
+            <div class=" container-fluid color-6 text-color-1 nav-size">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <ul class=" nav-pills list-none menu-size menu-text menu-color">
+                            <li class="my-list-not-selected my-list-selected"><a href="#0">Menu 0</a></li>
+                            <li class="my-list-not-selected"><a href="#1">Menu 1</a></li>
+                            <li class="my-list-not-selected"><a href="#2">Menu 2</a></li>
+                            <li class="my-list-not-selected"><a href="#3">Menu 3</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-2">.col-sm-8</div>
                 </div>
-                <div class="col-sm-4">.col-sm-8</div>
             </div>
-        </div>
 
-        {{"Hola " + "Mundo"}}
+            <div class="container-fluid body-size">
+                <div class="row size_cien">
+                    <div class="col-sm-2 color-7 sub_menu-border size_cien">    
+                        <div class=" container-fluid logo-size">
+                            <h1>Logo</h1>
+                        </div>
+                        <div class="container-fluid sub_menu">
+                            .col-sm-10
+                        </div>
+                    </div>
+                    <div class="col-sm-10 color-7 size_cien">
+                        <div class="funcion-border container-fluid">
+                            .col-sm-10
+                        </div>
+                        <div>
+                            .col-sm-10
+                        </div>
+                    </div>
+                </div>
+            </div>               
+        </div>
         <script>
+
             selected_menu();
         </script>
     </body>
