@@ -1,0 +1,19 @@
+.list-none{
+    list-style:none;
+    
+}
+.text-color-1{color: #ffffff;}
+
+li.my-list-not-selected>a {
+    text-decoration: none;
+    color: #9d9d9d;
+}
+
+li.my-list-selected>a {
+    text-decoration: none;
+    color: #ffffff;
+}
+ul.menu-text>li:hover>a{
+    text-decoration: none;
+    color: #ffffff;
+}

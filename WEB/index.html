@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 
-<html ng-app>
+<html ng-app lang="en">
     <head>
         <meta charset="utf-8">
         <title>Hola mundo</title>
+        <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style/style-color.css">
+        <link rel="stylesheet" href="style/style-size.css">
+        <link rel="stylesheet" href="style/style-text.css">
         <script src="script/angular.min.js"></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="script/script.js"></script>
     </head>
-    <body>
+    <body class="" >
+        <div class="color-6 text-color-1 nav-size">
+            <div class="row">
+                <div class="col-sm-8">
+                    <ul class=" nav-pills list-none menu-size menu-color menu-text">
+                        <li class="my-list-not-selected my-list-selected"><a href="#0">Menu 0</a></li>
+                        <li class="my-list-not-selected"><a href="#1">Menu 1</a></li>
+                        <li class="my-list-not-selected"><a href="#2">Menu 2</a></li>
+                        <li class="my-list-not-selected"><a href="#3">Menu 3</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">.col-sm-8</div>
+            </div>
+        </div>
+
         {{"Hola " + "Mundo"}}
+        <script>
+            selected_menu();
+        </script>
     </body>
 </html>
