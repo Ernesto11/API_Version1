@@ -2,7 +2,8 @@
     list-style:none;
     
 }
-.text-color-1{color: #ffffff;}
+.text-color-1{color: hsl(0, 0%, 100%);}
+.text-color-2{color: #7c7cad;}
 
 li.my-list-not-selected>a {
     text-decoration: none;

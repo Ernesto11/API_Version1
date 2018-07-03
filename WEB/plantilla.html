@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 
-<html ng-app="app">
+<html ng-app lang="en">
     <head>
         <meta charset="utf-8">
-        <title>ERP</title>
+        <title>Hola mundo</title>
         <link rel="stylesheet" href="style/style.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="style/style-color.css">
         <link rel="stylesheet" href="style/style-size.css">
         <link rel="stylesheet" href="style/style-text.css">
         <link rel="stylesheet" href="style/style-border.css">
-       
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script> 
-        <script src="script/controller.js"></script>
+        <script src="script/angular.min.js"></script> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="script/script.js"></script>
     </head>
-    <body ng-controller="main_controller" >
+    <body >
         <div id="cloud-container">
             <div class=" container-fluid color-6 text-color-1 nav-size">
                 <div class="row">
@@ -69,24 +67,7 @@
                             .col-sm-10
                         </div>
                         <div>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Precio</th>
-                                    <th scope="col">Costo</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="producto in productos">
-                                    <th  scope="row">{{producto.id_producto}}</th>
-                                    <td>{{producto.nombre}}</td>
-                                    <td>{{producto.precio}}</td>
-                                    <td>{{producto.costo}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            .col-sm-10
                         </div>
                     </div>
                 </div>
@@ -94,7 +75,7 @@
         </div>
         <script>
 
-            //selected_menu();
+            selected_menu();
         </script>
     </body>
 </html>

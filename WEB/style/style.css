@@ -11,7 +11,7 @@ body{
     height:100%; 
 }
 #cloud-container{
-    background-color: rebeccapurple;
+    background-color: #F9F9F9;
     position:absolute;
     top:0;
     bottom:0;
