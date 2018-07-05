@@ -12,26 +12,49 @@ import java.io.File;
 public class Producto {
 	
 	private int id_producto;
+	private Empresa empresa;
+	private Categoria categoriaProducto;
+	private Unidad_Medida unidadMedida;
+	private Marca marca; 
 	private String nombre;
 	private double precio;
 	private double costo;
 	private double impuesto;
+	private int codigoBarras;
 	private int cantidadDisponible;
 	private int cantidadMinima;
 	private int cantidadMaxima;
-	private Unidad_Medida unidadMedida;
-	private Categoria categoriaProducto;
-	private File imagen;
-	private String marca;
-	private String codigoBarras;
+	private String urlImagen;
 	private String detalle;
 	
 	
-	//GETTERS AND SETTERS
+	
+	@Override
+	public String toString() {
+		return "Producto [id_producto=" + id_producto + ", empresa=" + empresa
+				+ ", categoriaProducto=" + categoriaProducto
+				+ ", unidadMedida=" + unidadMedida + ", marca=" + marca
+				+ ", nombre=" + nombre + ", precio=" + precio + ", costo="
+				+ costo + ", impuesto=" + impuesto + ", codigoBarras="
+				+ codigoBarras + ", cantidadDisponible=" + cantidadDisponible
+				+ ", cantidadMinima=" + cantidadMinima + ", cantidadMaxima="
+				+ cantidadMaxima + ", urlImagen=" + urlImagen + ", detalle="
+				+ detalle + "]";
+	}
+
+	//GETTERS AND SETTERS	
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+	
 	public int getId_producto() {
 		return id_producto;
 	}
-	
+
 	public void setId_producto(int id_producto) {
 		this.id_producto = id_producto;
 	}
@@ -108,27 +131,27 @@ public class Producto {
 		this.categoriaProducto = categoriaProducto;
 	}
 	
-	public File getImagen() {
-		return imagen;
+	public String getUrlImagen() {
+		return urlImagen;
 	}
 	
-	public void setImagen(File imagen) {
-		this.imagen = imagen;
+	public void setUrlImagen(String imagen) {
+		this.urlImagen = imagen;
 	}
 	
-	public String getMarca() {
+	public Marca getMarca() {
 		return marca;
 	}
 	
-	public void setMarca(String marca) {
+	public void setMarca(Marca marca) {
 		this.marca = marca;
 	}
 	
-	public String getCodigoBarras() {
+	public int getCodigoBarras() {
 		return codigoBarras;
 	}
 	
-	public void setCodigoBarras(String codigoBarras) {
+	public void setCodigoBarras(int codigoBarras) {
 		this.codigoBarras = codigoBarras;
 	}
 	

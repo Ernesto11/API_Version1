@@ -12,7 +12,7 @@ public class Unidad_Medida {
 	private int id_UnidadMedida;
 	private String nombreUnidadMedida;
 	private String simbolo;
-	private String valorUnidadMedida;
+	private double valorUnidadMedida;
 	
 	
 	//GETTERS AND SETTERS
@@ -40,11 +40,11 @@ public class Unidad_Medida {
 		this.simbolo = simbolo;
 	}
 	
-	public String getValorUnidadMedida() {
+	public double getValorUnidadMedida() {
 		return valorUnidadMedida;
 	}
 	
-	public void setValorUnidadMedida(String valorUnidadMedida) {
+	public void setValorUnidadMedida(double valorUnidadMedida) {
 		this.valorUnidadMedida = valorUnidadMedida;
 	}
 }
