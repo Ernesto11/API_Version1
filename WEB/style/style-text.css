@@ -10,10 +10,28 @@ li.my-list-not-selected>a {
     color: #9d9d9d;
 }
 
+.link:link{
+    text-decoration: none;
+    color: #ffffff;
+}
+.link:hover{
+    text-decoration: none;
+    color: #ffffff;
+}
+.link:visited{
+    text-decoration: none;
+    color: #ffffff;
+}
+.link:active{
+    text-decoration: none;
+    color: #ffffff;
+}
+
 li.my-list-selected>a {
     text-decoration: none;
     color: #ffffff;
 }
+
 ul.menu-text>li:hover>a{
     text-decoration: none;
     color: #ffffff;
