@@ -34,8 +34,8 @@ public class Dao_Categoria extends Dao_DB {
 			ResultSet resultado = estado.executeQuery("select * from categoria");
 			while (resultado.next()) {
 				Categoria c = new Categoria();
-				c.setId_categoria(1);
-				c.setNombreCategoria("prueba");
+				c.setId_categoria(resultado.getInt("id_categoria"));
+				c.setNombreCategoria(resultado.getString("nombre"));
 				lista.add(c);
 			}
 		} catch (SQLException e) {

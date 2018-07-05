@@ -20,9 +20,9 @@ public class Controlador {
 		return gp.obtener_productos();
 	}
 	public List<Categoria> obtener_categorias(){
-		return null;
+		return gc.obtener_categorias();
 	}
 	public List<Unidad_Medida> obtener_unidades_medida(){
-		return null;
+		return gu.Obtener_unidades_medida();
 	}
 }

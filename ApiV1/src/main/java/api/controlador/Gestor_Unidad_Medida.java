@@ -12,5 +12,8 @@ public class Gestor_Unidad_Medida {
 	private Dao_Unidad_Medida db = new Dao_Unidad_Medida();
 	private List<Unidad_Medida> lista_unidades_medida = new ArrayList<Unidad_Medida>(); 
 	
-	
+	public List<Unidad_Medida> Obtener_unidades_medida() {
+		lista_unidades_medida = db.obtener_unidades_medida();
+		return lista_unidades_medida;
+	}
 }

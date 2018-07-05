@@ -34,17 +34,16 @@ public class API{
 	@Path("/get_categorias")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
-	public Categoria get_categorias(){
-		
-		return null;
+	public List<Categoria> get_categorias(){
+		return controlador.obtener_categorias();
 	}
 	
 	@POST
-	@Path("/get_unidad_Medida")
+	@Path("/get_unidades_medida")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
-	public Unidad_Medida get_unidad_Medida(){
-		return null;
+	public List<Unidad_Medida> get_unidades_medida(){
+		return controlador.obtener_unidades_medida();
 	}
 	@POST
 	@Path("/get_product_id")

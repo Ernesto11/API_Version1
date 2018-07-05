@@ -1,10 +1,12 @@
 var app = angular.module("app",[]);
 app.controller("main_controller",function($scope,$http){
-    $scope.posts=[];
-    $scope.new_post = {};
+    var url = "http://localhost:8686/ApiV1/rest/api/";
     $scope.productos ={};
+    $scope.categorias={};
+    $scope.unidades_medida={};
+    
     $scope.get_productos=function(){     
-        $http.post("http://localhost:8686/ApiV1/rest/api/get_products", {
+        $http.post(url+"get_products", {
 
         })
         .success(function(data,status,headers,config){
@@ -14,19 +16,33 @@ app.controller("main_controller",function($scope,$http){
             console.log(err);
         });
     };
-    $scope.get_productos();
-    $scope.add_post = function(){  
-        $http.post("http://localhost:8686/ApiV1/rest/api/get_products", {
-            usuario:"java",
-            contrasena: "1234"
-        })
+    $scope.get_categorias=function(){     
+        $http.post(url+"get_categorias", {
 
+        })
         .success(function(data,status,headers,config){
-            $scope.usuario=data;
+            $scope.categorias=data;
+            
         })
         .error(function(err,status,headers,config){
             console.log(err);
         });
     };
+
+    $scope.get_unidades_medida=function(){     
+        $http.post(url+"get_unidades_medida", {
+
+        })
+        .success(function(data,status,headers,config){
+            $scope.unidades_medida=data;
+        })
+        .error(function(err,status,headers,config){
+            console.log(err);
+        });
+    };
+    $scope.get_productos();
+    $scope.get_categorias();
+    $scope.get_unidades_medida();
+
     
 });
