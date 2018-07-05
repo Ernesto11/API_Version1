@@ -85,4 +85,46 @@ public class Dao_Producto extends Dao_DB {
 				e.printStackTrace();
 			}
 	}
+	
+	public void editarProducto(Producto pProducto){
+		this.conexion();
+		try {
+			CallableStatement statement = this.con.prepareCall("{call editar_producto(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+			statement.setInt(1, pProducto.getId_producto());
+			statement.setInt(2, pProducto.getEmpresa().getId_empresa());
+			statement.setInt(3, pProducto.getCategoriaProducto().getId_categoria());
+			statement.setInt(4, pProducto.getUnidadMedida().getId_UnidadMedida());
+			statement.setInt(5, pProducto.getMarca().getId_marca());
+			statement.setString(6, pProducto.getNombre());
+			statement.setDouble(7, pProducto.getPrecio());
+			statement.setDouble(8, pProducto.getCosto());
+			statement.setDouble(9, pProducto.getImpuesto());
+			statement.setInt(10,pProducto.getCodigoBarras());
+			statement.setDouble(11, pProducto.getUnidadMedida().getValorUnidadMedida());
+			statement.setInt(12,pProducto.getCantidadDisponible());
+			statement.setInt(13,pProducto.getCantidadMinima());
+			statement.setInt(14,pProducto.getCantidadMaxima());
+			statement.setString(15, pProducto.getUrlImagen());
+            statement.execute();
+            statement.close();
+			} catch (SQLException e) {
+			// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+		
+	}
+	
+	public void desecharProducto(int pId_producto, int pCantidadDesecho){
+		this.conexion();
+		try {
+			CallableStatement statement = this.con.prepareCall("{call desechar_producto(?,?)}");
+			statement.setInt(1, pId_producto);
+			statement.setInt(2, pCantidadDesecho);
+            statement.execute();
+            statement.close();
+			} catch (SQLException e) {
+			// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+	}
 }

@@ -12,8 +12,10 @@ import api.modelo.Unidad_Medida;
 public class Prueba_InsertarProducto {
 
 	public static void main(String[] args)  {
+		
+		
 		// TODO Auto-generated method stub
-		Producto p1 = new Producto();
+		//Producto p1 = new Producto();
 		Empresa e1 = new Empresa();
 		Marca m1 = new Marca();
 		Categoria c1 = new Categoria();
@@ -24,7 +26,7 @@ public class Prueba_InsertarProducto {
 		u1.setValorUnidadMedida(1);
 		m1.setId_marca(1);
 		c1.setId_categoria(1);
-		
+		/**
 		p1.setEmpresa(e1);
 		p1.setCategoriaProducto(c1);
 		p1.setMarca(m1);
@@ -37,9 +39,26 @@ public class Prueba_InsertarProducto {
 		//p1.setCosto(1);
 		//p1.setImpuesto(1);
 		//p1.setPrecio(1);
-		p1.setUrlImagen("none");
+		p1.setUrlImagen("none");*/
+		Producto p1 = new Producto();
+		p1.setId_producto(2);
+		p1.setNombre("Frijoles Don Pedro");
+		p1.setEmpresa(e1);
+		p1.setCantidadDisponible(10);
+		p1.setCantidadMaxima(100);
+		p1.setCantidadMinima(30);
+		p1.setCategoriaProducto(c1);
+		p1.setCodigoBarras(12345678);
+		p1.setCosto(1000);
+		p1.setImpuesto(0);
+		p1.setMarca(m1);
+		p1.setPrecio(1100);
+		p1.setUnidadMedida(u1);
+		p1.setUrlImagen("C://url");
+
 		Dao_Producto dp = new Dao_Producto();
-		dp.insertarProducto(p1);
+		//dp.editarProducto(p1);
+		dp.desecharProducto(1, 40);
 	}
 
 }
