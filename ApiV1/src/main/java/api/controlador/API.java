@@ -11,7 +11,10 @@ import javax.ws.rs.core.MediaType;
 
 import org.codehaus.jettison.json.JSONArray;
 
+import api.controlador.DTO.DTO_mensaje;
+import api.modelo.Categoria;
 import api.modelo.Producto;
+import api.modelo.Unidad_Medida;
 
 @Path("/api")
 public class API{
@@ -19,13 +22,30 @@ public class API{
 	private Controlador controlador = new Controlador();
 	
 	@POST
-	@Path("/insertarProducto")
+	@Path("/get_marcas")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
-	public Producto insertarProducto(Producto pProducto){
-		return pProducto;
+	public Producto get_marcas(Producto pProducto){
+		int id = pProducto.getId_producto();
+		return controlador.obtener_producto_id(id);
+	}
+
+	@POST
+	@Path("/get_categorias")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Categoria get_categorias(){
+		
+		return null;
 	}
 	
+	@POST
+	@Path("/get_unidad_Medida")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Unidad_Medida get_unidad_Medida(){
+		return null;
+	}
 	@POST
 	@Path("/get_product_id")
 	@Consumes({MediaType.APPLICATION_JSON})
@@ -34,7 +54,6 @@ public class API{
 		int id = pProducto.getId_producto();
 		return controlador.obtener_producto_id(id);
 	}
-	
 	@POST
 	@Path("/get_products")
 	@Consumes({MediaType.APPLICATION_JSON})
@@ -46,22 +65,22 @@ public class API{
 	@Path("/post_product")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
-	public List<Producto> post_product(){
-		return controlador.obtener_productos();
+	public DTO_mensaje post_product(Producto p){
+		return null;
 	}
 	@POST
 	@Path("/delete_product")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
-	public List<Producto> delete_product(Producto p){
-		return controlador.obtener_productos();
+	public DTO_mensaje delete_product(Producto p){
+		return null;
 	}
 	@POST
 	@Path("/put_product")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
-	public void put_product(Producto p){
-		//return controlador.obtener_productos();
+	public DTO_mensaje put_product(Producto p){
+		return null;
 	}
 	
 }

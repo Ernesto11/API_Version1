@@ -67,45 +67,55 @@
                     </div>
                     <div class="col-sm-10 color-7 size_cien">
                         <div class="funcion-border container-fluid">
-                            .col-sm-10
+                            <br>
+                            <div id="myTab" role="tablist">
+                                      <a class="nav-link btn color-1 link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Ver</a>
+                                      <a class="nav-link btn color-1 link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Crear</a>
+                            </div>
+                            <br>
                         </div>
-                        <div>
-                        <form name="myForm">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"> </th>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col">Precio</th>
-                                        <th scope="col">Costo</th>
-                                        <th scope="col">Impuesto</th>
-                                        <th scope="col">Cantidad disponible</th>
-                                        <th scope="col">Cantidad minima</th>
-                                        <th scope="col">Cantidad maxima</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="producto in productos">
-                                        <td> <input type="checkbox" ng-model="producto.value"></td>
-                                        <td>{{producto.nombre}}</td>
-                                        <td>{{producto.precio | currency : "₡"}}</td>
-                                        <td>{{producto.costo | currency : "₡"}}</td>
-                                        <td>{{producto.impuesto | currency : "%" }}</td>
-                                        <td>{{producto.cantidadDisponible}}</td>
-                                        <td>{{producto.cantidadMinima}}</td>
-                                        <td>{{producto.cantidadMaxima}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </form>
+                        <div class="tab-content" id="myTabContent">
+                        
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                      
+                                <form name="myForm">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col"> </th>
+                                                    <th scope="col">Nombre</th>
+                                                    <th scope="col">Precio</th>
+                                                    <th scope="col">Costo</th>
+                                                    <th scope="col">Impuesto</th>
+                                                    <th scope="col">Cantidad disponible</th>
+                                                    <th scope="col">Cantidad minima</th>
+                                                    <th scope="col">Cantidad maxima</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="producto in productos">
+                                                    <td> <input type="checkbox" ng-model="producto.value"></td>
+                                                    <td>{{producto.nombre}}</td>
+                                                    <td>{{producto.precio | currency : "₡"}}</td>
+                                                    <td>{{producto.costo | currency : "₡"}}</td>
+                                                    <td>{{producto.impuesto | currency : "%" }}</td>
+                                                    <td>{{producto.cantidadDisponible}}</td>
+                                                    <td>{{producto.cantidadMinima}}</td>
+                                                    <td>{{producto.cantidadMaxima}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                       
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
                         </div>
                     </div>
                 </div>
             </div>               
         </div>
         <script>
-
-            selected_menu();
+           // selected_menu();
         </script>
     </body>
 </html>
