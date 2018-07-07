@@ -8,3 +8,4 @@ ApiV1/.settings/org.eclipse.wst.common.project.facet.core.xml
 ApiV1/.settings/org.eclipse.wst.common.project.facet.core.xml
 ApiV1/.settings/org.eclipse.core.resources.prefs
 ApiV1/.project
+ApiV1/src/main/java/api/controlador/Configuracion.properties

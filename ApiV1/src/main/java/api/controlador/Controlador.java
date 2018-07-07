@@ -17,6 +17,8 @@ public class Controlador {
 		return gp.obtener_producto_id(id);
 	}
 	public List<Producto> obtener_productos(){
+		//System.out.print(Configuracion.getConfiguracion().getPORT());
+		
 		return gp.obtener_productos();
 	}
 	public List<Categoria> obtener_categorias(){
