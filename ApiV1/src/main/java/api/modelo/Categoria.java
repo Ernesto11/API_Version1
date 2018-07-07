@@ -13,6 +13,14 @@ public class Categoria {
 	private int id_categoria;
 	private String nombreCategoria;
 	
+	
+	
+	@Override
+	public String toString() {
+		return "Categoria [id_categoria=" + id_categoria + ", nombreCategoria="
+				+ nombreCategoria + "]";
+	}
+
 	//GETTERS AND SETTERS
 	public int getId_categoria() {
 		return id_categoria;
