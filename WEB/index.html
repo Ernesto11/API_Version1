@@ -109,9 +109,15 @@
                                        
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-                            <form>
+                            <form ng-submit="post_producto()">
                                 Nombre: <br>
                                 <input type="text"><br>
+                                Precio: <br>
+                                <input type="number"><br>
+                                Costo: <br>
+                                <input type="number"><br>
+                                Impuesto: <br>
+                                <input type="number"><br>
                                 Categoria: <br>
                                 <select>
                                     <option ng-repeat="categoria in categorias" value="categoria.id_categoria">{{categoria.nombreCategoria}}</option>
@@ -121,7 +127,9 @@
                                 <select>
                                     <option ng-repeat="unidad_medida in unidades_medida" value="unidad_medida.id_UnidadMedida">{{ unidad_medida.simbolo+"-"+unidad_medida.nombreUnidadMedida}}</option>
                                 </select>
-
+                                <br>
+                                <input type="submit" class="btn color-1" value="Crear">
+                                <p>{{text}}</p>
                             </form>
                         </div>
                     </div>

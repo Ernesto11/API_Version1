@@ -4,7 +4,7 @@ app.controller("main_controller",function($scope,$http){
     $scope.productos ={};
     $scope.categorias={};
     $scope.unidades_medida={};
-    
+    $scope.text = "hola";
     $scope.get_productos=function(){     
         $http.post(url+"get_products", {
 
@@ -39,6 +39,9 @@ app.controller("main_controller",function($scope,$http){
         .error(function(err,status,headers,config){
             console.log(err);
         });
+    };
+    $scope.post_producto = function(){
+        $scope.text = "hola mundo";
     };
     $scope.get_productos();
     $scope.get_categorias();

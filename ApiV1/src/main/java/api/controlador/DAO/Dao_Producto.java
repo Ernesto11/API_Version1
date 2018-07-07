@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
 
+import api.modelo.Categoria;
 import api.modelo.Producto;
 
 public class Dao_Producto extends Dao_DB {
@@ -50,6 +51,10 @@ public class Dao_Producto extends Dao_DB {
 				p.setCantidadDisponible(resultado.getInt("cantidad_disponible"));
 				p.setCantidadMaxima(resultado.getInt("cantidad_maxima"));
 				p.setCantidadMinima(resultado.getInt("cantidad_minima"));
+				Categoria c = new Categoria();
+				c.setId_categoria(1);
+				c.setNombreCategoria("nombre 1");
+				p.setCategoriaProducto(c);
 				lista.add(p);
 			}
 		} catch (SQLException e) {
