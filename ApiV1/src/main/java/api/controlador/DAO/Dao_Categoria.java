@@ -9,11 +9,11 @@ import api.modelo.Producto;
 
 public class Dao_Categoria extends Dao_DB {
 	
-	public void crearCategoria(Categoria pCategoria){
+	public void crearCategoria(String pNombre){
 		this.conexion();
 		try {
 			CallableStatement statement = this.con.prepareCall("{call crear_categoria(?)}");
-			statement.setString(1, pCategoria.getNombreCategoria());
+			statement.setString(1, pNombre);
             statement.execute();
             statement.close();
 			} catch (SQLException e) {

@@ -4,50 +4,86 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
 
+import api.modelo.Categoria;
+import api.modelo.Marca;
 import api.modelo.Producto;
 
 public class Dao_Marca extends Dao_DB {
 
-	
-	public Producto obtener_producto_id(int id){
+	public void crearMarca(String pNombre){
 		this.conexion();
 		try {
-			Statement estado = this.con.createStatement();
-			ResultSet resultado = estado.executeQuery("select * from producto");
-		} catch (SQLException e) {
+			CallableStatement statement = this.con.prepareCall("{call crear_marca(?)}");
+			statement.setString(1, pNombre);
+            statement.execute();
+            statement.close();
+			} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		Producto p = new Producto();
-		p.setId_producto(1);
-		p.setNombre("abc");
-		p.setPrecio(25);
-		return p;
-	}
-	public List<Producto> obtener_productos(){
-		List<Producto> lista = new ArrayList<Producto>(); 
-		this.conexion();
-		try {
-			Statement estado = this.con.createStatement();
-			ResultSet resultado = estado.executeQuery("select * from producto");
-			while (resultado.next()) {
-				Producto p = new Producto();
-				p.setId_producto(resultado.getInt("id_producto"));
-				p.setNombre(resultado.getString("nombre"));
-				p.setCosto(resultado.getDouble("costo"));
-				p.setPrecio(resultado.getDouble("precio"));
-				p.setImpuesto(resultado.getDouble("impuesto"));
-				p.setCantidadDisponible(resultado.getInt("cantidad_disponible"));
-				p.setCantidadMaxima(resultado.getInt("cantidad_maxima"));
-				p.setCantidadMinima(resultado.getInt("cantidad_minima"));
-				lista.add(p);
+				e.printStackTrace();
 			}
+	}
+	
+	public void editarMarca(Marca pMarca){
+		this.conexion();
+		try {
+			CallableStatement statement = this.con.prepareCall("{call editar_marca(?,?)}");
+			statement.setInt(1, pMarca.getId_marca());
+			statement.setString(2, pMarca.getNombre());
+            statement.execute();
+            statement.close();
+			} catch (SQLException e) {
+			// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+	}
+	
+	public void eliminarMarca(int id){
+		this.conexion();
+		try {
+			CallableStatement statement = this.con.prepareCall("{call eliminar_marca(?)}");
+			statement.setInt(1, id);
+			statement.executeQuery();
+			statement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
+	public Marca obtener_marca_id(int id){
+		this.conexion();
+		Marca m1 = new Marca();
+		try {
+			CallableStatement statement = this.con.prepareCall("{call obtener_marca_id(?)}");
+			statement.setInt(1, id);
+			ResultSet resultado = statement.executeQuery();
+			if(resultado.next()){
+				m1.setId_marca(resultado.getInt("id_marca"));
+				m1.setNombre(resultado.getString("nombre"));
+			}
+			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		return m1;
+	}
+	public List<Marca> obtener_marcas(){
+		List<Marca> lista = new ArrayList<Marca>(); 
+		this.conexion();
+		try {
+			Statement estado = this.con.createStatement();
+			ResultSet resultado = estado.executeQuery("call obtener_marcas");
+			while (resultado.next()) {
+				Marca m = new Marca();
+				m.setId_marca(resultado.getInt("id_marca"));
+				m.setNombre(resultado.getString("nombre"));
+				lista.add(m);
+			}
+			resultado.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return lista;
 	}
 }
