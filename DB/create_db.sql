@@ -89,6 +89,7 @@ CREATE TABLE Producto (
     FOREIGN KEY (fk_unidad_medida) REFERENCES Unidad_Medida(id_unidad_medida),
     FOREIGN KEY (fk_marca) REFERENCES Marca(id_marca)
 );
+
 CREATE TABLE Desecho (
     fk_producto int NOT NULL,
     fecha date,
