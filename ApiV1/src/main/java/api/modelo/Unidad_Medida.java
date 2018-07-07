@@ -15,6 +15,14 @@ public class Unidad_Medida {
 	private double valorUnidadMedida;
 	
 	
+	
+	@Override
+	public String toString() {
+		return "Unidad_Medida [id_UnidadMedida=" + id_UnidadMedida
+				+ ", nombreUnidadMedida=" + nombreUnidadMedida + ", simbolo="
+				+ simbolo + ", valorUnidadMedida=" + valorUnidadMedida + "]";
+	}
+
 	//GETTERS AND SETTERS
 	public int getId_UnidadMedida() {
 		return id_UnidadMedida;
