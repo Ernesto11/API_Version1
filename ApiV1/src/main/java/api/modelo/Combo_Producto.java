@@ -16,7 +16,6 @@ public class Combo_Producto {
 	private ArrayList<Producto> productosCombo;
 	
 	
-	
 	//GETTERS AND SETTERS
 	public int getId_combo() {
 		return id_combo;

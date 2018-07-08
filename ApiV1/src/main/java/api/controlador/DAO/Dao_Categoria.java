@@ -48,7 +48,6 @@ public class Dao_Categoria extends Dao_DB {
 			e.printStackTrace();
 		}	
 	}
-
 	
 	public Categoria obtener_categoria_id(int id){
 		this.conexion();
