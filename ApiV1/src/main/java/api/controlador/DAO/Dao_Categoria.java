@@ -85,7 +85,6 @@ public class Dao_Categoria extends Dao_DB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return lista;
 	}
 }

@@ -1,8 +1,9 @@
-DROP PROCEDURE IF EXISTS db_erp.obtener_usuario;
+DROP PROCEDURE IF EXISTS db_erp.obtener_empresa_id;
 
 DELIMITER $$
-CREATE PROCEDURE db_erp.obtener_usuario(
-    IN pNombre varchar(10)
+CREATE PROCEDURE db_erp.obtener_empresa_id(
+
+    IN pId_empresa INT
     )
 
 BEGIN
@@ -14,7 +15,7 @@ BEGIN
 	END;
     
     START TRANSACTION;
-    Select * from usuario where nombre = pNombre;
+    Select * from empresa where id_empresa = pId_empresa;
     
     COMMIT;
 END $$;
