@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!--style-->
+        <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="style/style_responsive.css">
+        <!--script-->
+        <script src="script/angular.min.js"></script>
+        <script src="script/controller.js"></script>
+    </head>
+    <body  ng-app="APP" ng-controller="Controller">
+        <div ng-class="{ modal: isSetModal() }" ng-show="isSetModal()" ></div>
+        <div class="modal_panel" ng-show="isSetModalPanel(1)">
+                <h1>Crear Producto</h1>
+                <form class="form" action="">    
+                    <table class="table_form_left"> 
+                        <tr>
+                            <td>
+                                imagen
+                            </td>
+                            <td>
+                                Nombre del producto <br>
+                                <input type="text"><br>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <table class="table_form">
+                        <tr>
+                            <td>Precio:</td>
+                            <td><input type="number"><br></td>
+                            <td>Unidad Medida:</td>
+                            <td>
+                                <select>    
+                                    <option ng-repeat="unidad_medida in unidades_medida" value="unidad_medida.id_UnidadMedida">{{ unidad_medida.simbolo+"-"+unidad_medida.nombreUnidadMedida}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Costo:</td>
+                            <td><input type="number"><br></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Impuesto:</td>
+                            <td><input type="number"><br></td>
+                            <td></td>
+                            <td></td>
+                        </tr>  
+                        <tr>
+                            <td>Categoria:</td>
+                            <td>         
+                                <select>
+                                    <option ng-repeat="categoria in categorias" value="categoria.id_categoria">{{categoria.nombreCategoria}}</option>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <input type="submit" class="btn" value="Crear">
+                                <button class="btn" ng-click="setModal(0)">Cerrar</button>
+                            </td>
+                        </tr>                                                              
+                    </table>
+                    
+                </form>
+                
+        </div>
+        <div class="all">
+            <div class="nav">
+                <div class="menu">
+                    <ul>
+                        <li><a href="#1">Menu 1</a></li>
+                        <li><a href="#2">Menu 2</a></li>
+                        <li><a href="#3">Menu 3</a></li>
+                    </ul>
+                </div>
+                <div class="login">Admin</div>
+            </div>
+            <div class="body">
+                <div class="sub_menu">
+                    <div class="logo"><h1>Logo</h1></div>
+                    <div class="list">
+                        <strong>Tablero</strong>
+                        <br>
+                        <br>
+                        <strong>Operaciones</strong>
+                        <ul>
+                            <li ng-class="{ active: isSet(1) }"><a href ng-click="setTab(1)">Inventario</a></li>
+                            <li ng-class="{ active: isSet(2) }"><a href ng-click="setTab(2)">Desecho</a></li>
+                        </ul>
+                        <strong>Datos principales</strong>
+                        <ul>
+                            <li ng-class="{ active: isSet(3) }"><a href ng-click="setTab(3)">Producto</a></li>
+                            <li ng-class="{ active: isSet(4) }"><a href ng-click="setTab(4)">Categoria</a></li>
+                        </ul>
+                        <strong>Informes</strong>
+                        <ul>
+                            <li ng-class="{ active: isSet(5) }"><a href ng-click="setTab(5)">Recuperar inventario actual</a></li>
+                            <li ng-class="{ active: isSet(6) }"><a href ng-click="setTab(6)">Valoracion del inventario</a></li>
+                        </ul>
+                        <strong>Configuracion</strong>
+                        <ul>
+                            <li ng-class="{ active: isSet(7) }"><a href ng-click="setTab(7)">Unidades de medida</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="sub_panel" ng-show="isSet(1)">
+                        <h2>Inventario</h2>
+                        <br>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"> </th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Costo</th>
+                                    <th scope="col">Impuesto</th>
+                                    <th scope="col">Cantidad disponible</th>
+                                    <th scope="col">Cantidad minima</th>
+                                    <th scope="col">Cantidad maxima</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="producto in productos">
+                                    <td> <input type="checkbox" ng-model="producto.value"></td>
+                                    <td>{{producto.nombre}}</td>
+                                    <td>{{producto.precio | currency : "₡"}}</td>
+                                    <td>{{producto.costo | currency : "₡"}}</td>
+                                    <td>{{producto.impuesto | currency : "%" }}</td>
+                                    <td>{{producto.cantidadDisponible}}</td>
+                                    <td>{{producto.cantidadMinima}}</td>
+                                    <td>{{producto.cantidadMaxima}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                    <div class="sub_panel" ng-show="isSet(2)">
+                        <h2>Desecho</h2>
+                        
+                    </div>
+                    <div class="sub_panel" ng-show="isSet(3)">
+                        <h2>Producto</h2>
+                        <br>
+                        <button class="btn" ng-click="setModal(1)">Crear</button>
+                        <button class="btn" ng-click="setModal(1)">Eliminar</button>
+                        <button class="btn" ng-click="setModal(1)">Modificar</button>
+                        <br>
+                        <br>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> </th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Precio</th>
+                                        <th scope="col">Costo</th>
+                                        <th scope="col">Impuesto</th>
+                                        <th scope="col">Cantidad disponible</th>
+                                        <th scope="col">Cantidad minima</th>
+                                        <th scope="col">Cantidad maxima</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="producto in productos">
+                                        <td> <input type="checkbox" ng-model="producto.value"></td>
+                                        <td>{{producto.nombre}}</td>
+                                        <td>{{producto.precio | currency : "₡"}}</td>
+                                        <td>{{producto.costo | currency : "₡"}}</td>
+                                        <td>{{producto.impuesto | currency : "%" }}</td>
+                                        <td>{{producto.cantidadDisponible}}</td>
+                                        <td>{{producto.cantidadMinima}}</td>
+                                        <td>{{producto.cantidadMaxima}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sub_panel" ng-show="isSet(4)"><h2>Categoria</h2></div>
+                    <div class="sub_panel" ng-show="isSet(5)"><h2>Recuperar inventario actual</h2></div>
+                    <div class="sub_panel" ng-show="isSet(6)"><h2>Valoracion del inventario</h2></div>
+                    <div class="sub_panel" ng-show="isSet(7)"><h2>Unidades de medida</h2></div>
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

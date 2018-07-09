@@ -1,0 +1,35 @@
+@media only screen and (max-width: 600px),( max-height: 400px) {
+    .nav{
+        height: 5%;
+        width: 100%;
+    }
+    .menu{
+        width: 50%;
+    }
+    .menu>ul{
+        display: none;
+    }
+    .login{
+        display: none;
+    }
+    .logo{
+        display: none;
+    }
+    .body{
+        height: 95%;
+        width: 100%;
+        background-color:var(--color3);
+    }
+    .sub_menu{
+        height: 10%;
+        width: 100%;
+        display: block;
+        border-right: none;
+        border-bottom: 1px solid var(--color7);
+    }
+    .panel{
+        height: 90%;
+        width: 100%;
+        display: block;
+    }
+}
