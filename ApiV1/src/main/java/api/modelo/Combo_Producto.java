@@ -15,6 +15,9 @@ public class Combo_Producto {
 	private String nombre;
 	private ArrayList<Producto> productosCombo;
 	
+	public void agregarProductoCombo(Producto pProducto){
+		productosCombo.add(pProducto);
+	}
 	
 	//GETTERS AND SETTERS
 	public int getId_combo() {

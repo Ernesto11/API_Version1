@@ -1,10 +1,29 @@
-var app = angular.module("app",[]);
-app.controller("main_controller",function($scope,$http){
+var app = angular.module('APP',[]);
+app.controller('Controller', ['$scope','$http', function($scope,$http) {
     var url = "http://localhost:8686/ApiV1/rest/api/";
+    $scope.tab = 1;
+    $scope.modal = 0;
     $scope.productos ={};
     $scope.categorias={};
     $scope.unidades_medida={};
-    $scope.text = "hola";
+    
+    $scope.setTab = function(newTab){
+      $scope.tab = newTab;
+    };
+    $scope.isSet = function(tabNum){
+      return $scope.tab === tabNum;
+    };
+
+    $scope.setModal = function(newModal){
+        $scope.modal = newModal;
+    };
+    $scope.isSetModalPanel = function(modalNum){
+        return $scope.modal === modalNum;
+    };
+    $scope.isSetModal = function(){
+        return $scope.modal > 0;
+    };
+
     $scope.get_productos=function(){     
         $http.post(url+"get_products", {
 
@@ -22,7 +41,6 @@ app.controller("main_controller",function($scope,$http){
         })
         .success(function(data,status,headers,config){
             $scope.categorias=data;
-            
         })
         .error(function(err,status,headers,config){
             console.log(err);
@@ -40,12 +58,8 @@ app.controller("main_controller",function($scope,$http){
             console.log(err);
         });
     };
-    $scope.post_producto = function(){
-        $scope.text = "hola mundo";
-    };
     $scope.get_productos();
-    $scope.get_categorias();
-    $scope.get_unidades_medida();
+    //$scope.get_categorias();
+    //$scope.get_unidades_medida();
 
-    
-});
+}]);
