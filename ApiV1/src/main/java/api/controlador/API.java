@@ -13,6 +13,7 @@ import org.codehaus.jettison.json.JSONArray;
 
 import api.controlador.DTO.DTO_mensaje;
 import api.modelo.Categoria;
+import api.modelo.Marca;
 import api.modelo.Producto;
 import api.modelo.Unidad_Medida;
 
@@ -20,6 +21,8 @@ import api.modelo.Unidad_Medida;
 public class API{
 	
 	private Controlador controlador = new Controlador();
+	
+	
 	
 	@POST
 	@Path("/get_marcas")
@@ -81,5 +84,16 @@ public class API{
 	public DTO_mensaje put_product(Producto p){
 		return null;
 	}
+	
+	//METODOS CLASE MARCA
+	@POST
+	@Path("/get_marca_id")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Marca getMarcaId(Marca pMarca){
+		return controlador.obtenerMarcaId(pMarca.getId_marca());
+	}
+
+	
 	
 }

@@ -3,6 +3,7 @@ package api.controlador;
 import java.util.List;
 
 import api.modelo.Categoria;
+import api.modelo.Marca;
 import api.modelo.Producto;
 import api.modelo.Unidad_Medida;
 
@@ -26,5 +27,26 @@ public class Controlador {
 	}
 	public List<Unidad_Medida> obtener_unidades_medida(){
 		return gu.Obtener_unidades_medida();
+	}
+	
+	//METODOS GESTOR MARCA
+	public Marca obtenerMarcaId(int id){
+		return gm.obtenerMarcaId(id);
+	}
+	
+	public List<Marca> obtenerMarcas(){
+		return gm.obtenerMarcas();
+	}
+	
+	public void crearMarca(String pNombreMarca){
+		gm.crearMarca(pNombreMarca);
+	}
+	
+	public void eliminarMarca(int id){
+		gm.eliminarMarca(id);
+	}
+	
+	public void editarMarca(int id, String pNombre){
+		gm.editarMarca(id, pNombre);
 	}
 }

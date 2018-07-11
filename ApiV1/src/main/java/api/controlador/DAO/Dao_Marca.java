@@ -23,12 +23,12 @@ public class Dao_Marca extends Dao_DB {
 			}
 	}
 	
-	public void editarMarca(Marca pMarca){
+	public void editarMarca(int id, String pNombre){
 		this.conexion();
 		try {
 			CallableStatement statement = this.con.prepareCall("{call editar_marca(?,?)}");
-			statement.setInt(1, pMarca.getId_marca());
-			statement.setString(2, pMarca.getNombre());
+			statement.setInt(1, id);
+			statement.setString(2, pNombre);
             statement.execute();
             statement.close();
 			} catch (SQLException e) {
