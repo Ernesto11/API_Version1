@@ -236,11 +236,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <li ng-repeat="marca in marcas">
-                                        <td> <input type="checkbox" ng-model="marcas.value"></td>
-                                        <td>{{marcas.id_marca}}</td>
-                                        <td>{{marcas.nombre}}</td>
-                                    </li>
+                                    <tr ng-repeat="marca in marcas">
+                                        <td> <input type="checkbox" ng-model="marca.value"></td>
+                                        <td>{{marca.id_marca}}</td>
+                                        <td>{{marca.nombre}}</td>
+                                    </tr>
                                 </tbody>
                             </table>                    
                         </div>
