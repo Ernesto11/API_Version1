@@ -29,7 +29,7 @@ public class Configuracion {
 		InputStream input = null;
 		
 		String Directorio  = getClass().getProtectionDomain().getCodeSource().getLocation().toString().substring(6);
-		System.out.println(Directorio);
+
 		try {
 			input = new FileInputStream(Directorio+"api/controlador/Configuracion.properties");
 		    prop.load(input);

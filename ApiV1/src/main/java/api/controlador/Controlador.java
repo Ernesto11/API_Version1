@@ -38,15 +38,15 @@ public class Controlador {
 		return gm.obtenerMarcas();
 	}
 	
-	public void crearMarca(String pNombreMarca){
-		gm.crearMarca(pNombreMarca);
+	public void crearMarca(Marca pMarca){
+		gm.crearMarca(pMarca);
 	}
 	
-	public void eliminarMarca(int id){
-		gm.eliminarMarca(id);
+	public void eliminarMarca(Marca pMarca){
+		gm.eliminarMarca(pMarca);
 	}
 	
-	public void editarMarca(int id, String pNombre){
-		gm.editarMarca(id, pNombre);
+	public void editarMarca(Marca pMarca){
+		gm.editarMarca(pMarca);
 	}
 }

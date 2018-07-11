@@ -10,11 +10,11 @@ import api.modelo.Producto;
 
 public class Dao_Marca extends Dao_DB {
 
-	public void crearMarca(String pNombre){
+	public void crearMarca(Marca pMarca){
 		this.conexion();
 		try {
 			CallableStatement statement = this.con.prepareCall("{call crear_marca(?)}");
-			statement.setString(1, pNombre);
+			statement.setString(1, pMarca.getNombre());
             statement.execute();
             statement.close();
 			} catch (SQLException e) {
@@ -23,12 +23,12 @@ public class Dao_Marca extends Dao_DB {
 			}
 	}
 	
-	public void editarMarca(int id, String pNombre){
+	public void editarMarca(Marca pMarca){
 		this.conexion();
 		try {
 			CallableStatement statement = this.con.prepareCall("{call editar_marca(?,?)}");
-			statement.setInt(1, id);
-			statement.setString(2, pNombre);
+			statement.setInt(1, pMarca.getId_marca());
+			statement.setString(2, pMarca.getNombre());
             statement.execute();
             statement.close();
 			} catch (SQLException e) {
@@ -37,11 +37,11 @@ public class Dao_Marca extends Dao_DB {
 			}	
 	}
 	
-	public void eliminarMarca(int id){
+	public void eliminarMarca(Marca pMarca){
 		this.conexion();
 		try {
 			CallableStatement statement = this.con.prepareCall("{call eliminar_marca(?)}");
-			statement.setInt(1, id);
+			statement.setInt(1, pMarca.getId_marca());
 			statement.executeQuery();
 			statement.close();
 		} catch (SQLException e) {

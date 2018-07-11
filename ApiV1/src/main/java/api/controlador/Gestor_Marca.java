@@ -13,16 +13,16 @@ public class Gestor_Marca {
 		dao_marca = new Dao_Marca();
 	}
 	
-	public void crearMarca(String pNombre){
-		dao_marca.crearMarca(pNombre);
+	public void crearMarca(Marca pMarca){
+		dao_marca.crearMarca(pMarca);
 	}
 	
-	public void eliminarMarca(int id){
-		dao_marca.eliminarMarca(id);
+	public void eliminarMarca(Marca pMarca){
+		dao_marca.eliminarMarca(pMarca);
 	}
 	
-	public void editarMarca(int id,String pNombre){
-		dao_marca.editarMarca(id,pNombre);
+	public void editarMarca(Marca pMarca){
+		dao_marca.editarMarca(pMarca);
 	}
 	
 	public Marca obtenerMarcaId(int id){

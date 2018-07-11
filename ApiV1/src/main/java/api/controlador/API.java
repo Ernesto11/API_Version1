@@ -24,14 +24,6 @@ public class API{
 	
 	
 	
-	@POST
-	@Path("/get_marcas")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	public Producto get_marcas(Producto pProducto){
-		int id = pProducto.getId_producto();
-		return controlador.obtener_producto_id(id);
-	}
 
 	@POST
 	@Path("/get_categorias")
@@ -70,6 +62,7 @@ public class API{
 	public DTO_mensaje post_product(Producto p){
 		return null;
 	}
+	
 	@POST
 	@Path("/delete_product")
 	@Consumes({MediaType.APPLICATION_JSON})
@@ -77,6 +70,7 @@ public class API{
 	public DTO_mensaje delete_product(Producto p){
 		return null;
 	}
+
 	@POST
 	@Path("/put_product")
 	@Consumes({MediaType.APPLICATION_JSON})
@@ -93,6 +87,45 @@ public class API{
 	public Marca getMarcaId(Marca pMarca){
 		return controlador.obtenerMarcaId(pMarca.getId_marca());
 	}
+	
+	@POST
+	@Path("/put_marca")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public DTO_mensaje putMarca(Marca pNvaMarca){
+		controlador.crearMarca(pNvaMarca);
+		return null;
+	}
+	
+	@POST
+	@Path("/delete_marca")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public DTO_mensaje deleteMarca(Marca pMarca){
+		controlador.eliminarMarca(pMarca);
+		return null;
+	}
+	
+	@POST
+	@Path("/edit_marca")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public DTO_mensaje editMarca(Marca pMarca){
+		controlador.editarMarca(pMarca);
+		return null;
+	}
+	
+	@POST
+	@Path("/get_marcas")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<Marca> getMarcas(){
+		return controlador.obtenerMarcas();
+	}
+	
+	
+	
+	
 
 	
 	
