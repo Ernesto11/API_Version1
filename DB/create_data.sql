@@ -17,11 +17,10 @@ DELETE FROM unidad_medida;
 ALTER TABLE unidad_medida AUTO_INCREMENT = 1;
 
 
-INSERT INTO usuario(`nombre`,`contrasenna`,`tipo`)VALUES
+INSERT INTO usuario(`nombreUsuario`,`contrasenna`,`tipo`)VALUES
 ("usr1","12345","admin"),("usr2","12345","usuario"),("usr3","12345","admin"),("usr4","12345","usuario");
 
-INSERT INTO empleado(`fk_usuario`,`nombre`)VALUES
-(2,"nombre 1"),(4,"nombre 2");
+
 
 INSERT INTO administrador(`fk_usuario`,`nombre`)VALUES
 (1,"nombre 1"),(3,"nombre 2");

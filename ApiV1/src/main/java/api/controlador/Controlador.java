@@ -14,17 +14,15 @@ public class Controlador {
 	private Gestor_Categoria gc = new Gestor_Categoria();
 	private Gestor_Unidad_Medida gu = new Gestor_Unidad_Medida();
 	
+	//Metodos Producto
 	public Producto obtener_producto_id (int id){
 		return gp.obtener_producto_id(id);
 	}
 	public List<Producto> obtener_productos(){
-		//System.out.print(Configuracion.getConfiguracion().getPORT());
-		
 		return gp.obtener_productos();
 	}
-	public List<Categoria> obtener_categorias(){
-		return gc.obtener_categorias();
-	}
+	
+	//Metodos Unidades de Medida
 	public List<Unidad_Medida> obtener_unidades_medida(){
 		return gu.Obtener_unidades_medida();
 	}
@@ -49,4 +47,10 @@ public class Controlador {
 	public void editarMarca(Marca pMarca){
 		gm.editarMarca(pMarca);
 	}
+	//Metodos Categoria
+	public List<Categoria> obtener_categorias(){return gc.obtener_categorias();}
+	public Categoria obtener_categoria_id(int id){return gc.obtener_categoria_id(id);}
+	public void crear_categoria(String pNombre){gc.crear_categoria(pNombre);}
+	public void editar_categoria(Categoria pCategoria){gc.editar_categoria(pCategoria);}
+	public void eliminar_categoria(int id){gc.eliminar_categoria(id);}
 }

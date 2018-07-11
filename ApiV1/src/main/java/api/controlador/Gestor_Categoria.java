@@ -1,5 +1,8 @@
 package api.controlador;
 
+import java.sql.CallableStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,4 +19,20 @@ public class Gestor_Categoria {
 		lista_categorias=db.obtener_categorias();
 		return lista_categorias;
 	}
+	public Categoria obtener_categoria_id(int id){
+		return db.obtener_categoria_id(id);
+	}
+	public void crear_categoria(String pNombre){
+		db.crearCategoria(pNombre);
+	}
+	
+	public void editar_categoria(Categoria pCategoria){
+		db.editarCategoria(pCategoria);
+	}
+	
+	public void eliminar_categoria(int id){
+		db.eliminarCategoria(id);
+	}
+	
+	
 }

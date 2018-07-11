@@ -131,15 +131,12 @@
                             <li ng-class="{ active: isSet(3) }"><a href ng-click="setTab(3)">Producto</a></li>
                             <li ng-class="{ active: isSet(4) }"><a href ng-click="setTab(4)">Categoria</a></li>
                             <li ng-class="{ active: isSet(5) }"><a href ng-click="setTab(5)">Marca</a></li>
+                            <li ng-class="{ active: isSet(6) }"><a href ng-click="setTab(6)">Unidades de medida</a></li>
                         </ul>
                         <strong>Informes</strong>
                         <ul>
-                            <li ng-class="{ active: isSet(6) }"><a href ng-click="setTab(6)">Recuperar inventario actual</a></li>
-                            <li ng-class="{ active: isSet(7) }"><a href ng-click="setTab(7)">Valoracion del inventario</a></li>
-                        </ul>
-                        <strong>Configuracion</strong>
-                        <ul>
-                            <li ng-class="{ active: isSet(8) }"><a href ng-click="setTab(8)">Unidades de medida</a></li>
+                            <li ng-class="{ active: isSet(7) }"><a href ng-click="setTab(7)">Recuperar inventario actual</a></li>
+                            <li ng-class="{ active: isSet(8) }"><a href ng-click="setTab(8)">Valoracion del inventario</a></li>
                         </ul>
                     </div>
                 </div>
@@ -216,7 +213,30 @@
                             </table>
                         </div>
                     </div>
-                    <div class="sub_panel" ng-show="isSet(4)"><h2>Categoria</h2></div>
+                    <div class="sub_panel" ng-show="isSet(4)"><h2>Categoria</h2>
+                        <br>
+                        <button class="btn" ng-click="setModal(1)">Crear</button>
+                        <button class="btn" ng-click="setModal(1)">Eliminar</button>
+                        <button class="btn" ng-click="setModal(1)">Modificar</button>
+                        <br>
+                        <br>
+                        <div >
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Nombre Categoria</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="categoria in categorias">
+                                        <td> <input type="checkbox" ng-model="categoria.value"></td>
+                                        <td>{{categoria.nombreCategoria}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>                    
+                        </div>
+                    </div>
                     
                     <div class="sub_panel" ng-show="isSet(5)">
                         <h2>Marca</h2>
@@ -246,9 +266,12 @@
                         </div>
                     </div>
                     
-                    <div class="sub_panel" ng-show="isSet(6)"><h2>Recuperar inventario actual</h2></div>
-                    <div class="sub_panel" ng-show="isSet(7)"><h2>Valoracion del inventario</h2></div>
-                    <div class="sub_panel" ng-show="isSet(8)"><h2>Unidades de medida</h2></div>
+                    <div class="sub_panel" ng-show="isSet(6)"><h2>Unidades de medida</h2>    
+                      
+                    </div>
+                    <div class="sub_panel" ng-show="isSet(7)"><h2>Recuperar inventario actual</h2></div>
+                    <div class="sub_panel" ng-show="isSet(8)"><h2>Valoracion del inventario</h2></div>
+                    
                     
                 </div>
             </div>

@@ -62,7 +62,7 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
     };
     //$scope.get_productos();
     
-    //$scope.get_categorias();
+    $scope.get_categorias();
     //$scope.get_unidades_medida();
     
     // Funciones marca
