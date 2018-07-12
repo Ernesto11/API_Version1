@@ -11,6 +11,7 @@
     </head>
     <body  ng-app="APP" ng-controller="Controller">
         <a href ng-click="setModalPost(0)">
+            <div ng-class="{ modal: isSetModal() }" ng-show="isSetModal()" ></div>
         </a>
         <div class="modal_panel" ng-show="isSetModalPanel(1)">
                 <div class="title_panel">
