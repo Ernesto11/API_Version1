@@ -10,97 +10,137 @@
         <script src="script/controller.js"></script>
     </head>
     <body  ng-app="APP" ng-controller="Controller">
-        <div ng-class="{ modal: isSetModal() }" ng-show="isSetModal()" ></div>
+        <a href ng-click="setModalPost(0)">
+        </a>
         <div class="modal_panel" ng-show="isSetModalPanel(1)">
-                <h1>Crear Producto</h1>
-                <form class="form" action="">    
-                    <table class="table_form_left"> 
-                        <tr>
-                            <td>
-                                imagen
-                            </td>
-                            <td>
-                                Nombre del producto <br>
-                                <input type="text"><br>
-                            </td>
-                        </tr>
-                    </table>
-                    <br>
-                    <br>
-                    <table class="table_form">
-                        <tr>
-                            <td>Precio:</td>
-                            <td><input type="number"><br></td>
-                            <td>Unidad Medida:</td>
-                            <td>
-                                <select>    
-                                    <option ng-repeat="unidad_medida in unidades_medida" value="unidad_medida.id_UnidadMedida">{{ unidad_medida.simbolo+"-"+unidad_medida.nombreUnidadMedida}}</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Costo:</td>
-                            <td><input type="number"><br></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Impuesto:</td>
-                            <td><input type="number"><br></td>
-                            <td></td>
-                            <td></td>
-                        </tr>  
-                        <tr>
-                            <td>Categoria:</td>
-                            <td>         
-                                <select>
-                                    <option ng-repeat="categoria in categorias" value="categoria.id_categoria">{{categoria.nombreCategoria}}</option>
-                                </select>
-                            </td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <input type="submit" class="btn" value="Crear">
-                                <button class="btn" ng-click="setModal(0)">Cerrar</button>
-                            </td>
-                        </tr>                                                              
-                    </table>
-                    
-                </form>
+                <div class="title_panel">
+                    <h1>Crear Producto</h1>
+                </div>
+                <div class="body_panel">
+                        <form class="form" action="">    
+                                <table class="table_form_left"> 
+                                    <tr>
+                                        <td>
+                                            imagen
+                                        </td>
+                                        <td>
+                                            Nombre del producto <br>
+                                            <input type="text"><br>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br>
+                                <br>
+                                <table class="table_form">
+                                    <tr>
+                                        <td>Precio:</td>
+                                        <td><input type="number"><br></td>
+                                        <td>Unidad Medida:</td>
+                                        <td>
+                                            <select>    
+                                                <option ng-repeat="unidad_medida in unidades_medida" value="unidad_medida.id_UnidadMedida">{{ unidad_medida.simbolo+"-"+unidad_medida.nombreUnidadMedida}}</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Costo:</td>
+                                        <td><input type="number"><br></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Impuesto:</td>
+                                        <td><input type="number"><br></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>  
+                                    <tr>
+                                        <td>Categoria:</td>
+                                        <td>         
+                                            <select>
+                                                <option ng-repeat="categoria in categorias" value="categoria.id_categoria">{{categoria.nombreCategoria}}</option>
+                                            </select>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <input type="submit" class="btn" value="Crear">
+                                            <button class="btn" ng-click="setModalPost(0)">Cerrar</button>
+                                        </td>
+                                    </tr>                                                              
+                                </table>
+                                
+                            </form>
+                            
+                </div>
                 
         </div>
 
-        <div class="modal_panel" ng-show="isSetModalPanel(5)">
-                <h1>Crear Marca</h1>
-                <form class="form" action="">    
-                    <table class="table_form_left"> 
-                        <tr>
-                        <br>
-                        <br>
-                            <td>
-                                Nombre de la Marca:
+        <div class="modal_panel_1" ng-show="isSetModalPanel(3)">
+                <div class="title_panel">
+                        <h1>Crear Categoria</h1>
+                </div>
+                <div class="body_panel">
+                    <form class="form" action="">    
+                            <table class="table_form_left"> 
+                                <tr>
                                 <br>
                                 <br>
-                                <input type="text" ng-model="marca.nombre"><br>
-                            </td>
-                        </tr>
-                    </table>
-                            <td>
-                                <br>
-                                <br>
-                                <input type="submit" ng-click="putMarca()" class="btn" value="Crear Marca">
-                                <button class="btn" ng-click="setModal(0)">Cerrar</button>
-                            </td>
-                        </tr>                                                              
-                    </table>
-                    
-                </form>
+                                    <td>
+                                        Nombre de la Categoria:
+                                        <br>
+                                        <br>
+                                        <input type="text" ng-model="value_categoria.nombreCategoria"><br>
+                                    </td>
+                                </tr>
+                            </table>
+                                    <td>
+                                        <br>
+                                        <br>
+                                        <input type="submit" ng-click="post_categoria()" ng-show="isPost" class="btn" value="Crear Categoria">
+                                        <input type="submit" ng-click="put_categoria()"  ng-show="!isPost" class="btn" value="Editar Categoria">
+                                        <button class="btn" ng-click="setModalPost(0)">Cerrar</button>
+                                    </td>
+                                </tr>                                                              
+                            </table>
+                        </form>
+                </div>
                 
+        </div>
+
+        <div class="modal_panel_1" ng-show="isSetModalPanel(5)">
+                <div class="title_panel">
+                        <h1>Crear Marca</h1>
+                </div>
+                <div class="body_panel">
+                    <form class="form" action="">    
+                            <table class="table_form_left"> 
+                                <tr>
+                                <br>
+                                <br>
+                                    <td>
+                                        Nombre de la Marca:
+                                        <br>
+                                        <br>
+                                        <input type="text" ng-model="marca.nombre"><br>
+                                    </td>
+                                </tr>
+                            </table>
+                                    <td>
+                                        <br>
+                                        <br>
+                                        <input type="submit" ng-click="putMarca()" class="btn" value="Crear Marca">
+                                        <button class="btn" ng-click="setModalPost(0)">Cerrar</button>
+                                    </td>
+                                </tr>                                                              
+                            </table>
+                        </form>
+                </div>
         </div>
 
         <div class="all">
@@ -179,9 +219,9 @@
                     <div class="sub_panel" ng-show="isSet(3)">
                         <h2>Producto</h2>
                         <br>
-                        <button class="btn" ng-click="setModal(1)">Crear</button>
+                        <button class="btn" ng-click="setModalPost(1)">Crear</button>
                         <button class="btn" ng-click="setModal(1)">Eliminar</button>
-                        <button class="btn" ng-click="setModal(1)">Modificar</button>
+                        <button class="btn" ng-click="setModalPut(1)">Modificar</button>
                         <br>
                         <br>
                         <div>
@@ -215,13 +255,13 @@
                     </div>
                     <div class="sub_panel" ng-show="isSet(4)"><h2>Categoria</h2>
                         <br>
-                        <button class="btn" ng-click="setModal(1)">Crear</button>
-                        <button class="btn" ng-click="setModal(1)">Eliminar</button>
-                        <button class="btn" ng-click="setModal(1)">Modificar</button>
+                        <button class="btn" ng-click="setModalPost(3)">Crear</button>
+                        <button class="btn" ng-click="delete_categoria()">Eliminar</button>
+                        <button class="btn" ng-click="setModalPut(3)">Modificar</button>
                         <br>
                         <br>
                         <div >
-                            <table class="table">
+                            <table class="table_left">
                                 <thead>
                                     <tr>
                                         <th scope="col"></th>
@@ -241,9 +281,9 @@
                     <div class="sub_panel" ng-show="isSet(5)">
                         <h2>Marca</h2>
                         <br>
-                        <button class="btn" ng-click="setModal(5)">Crear</button>
+                        <button class="btn" ng-click="setModalPost(5)">Crear</button>
                         <button class="btn" ng-click="setModal(5)">Eliminar</button>
-                        <button class="btn" ng-click="setModal(5)">Modificar</button>
+                        <button class="btn" ng-click="setModalPut(5)">Modificar</button>
                         <br> 
                         <br>
                         <div >

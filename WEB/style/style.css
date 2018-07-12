@@ -58,13 +58,32 @@ body{
 .modal_panel{
     position:absolute;
     overflow:hidden;
-    padding: 5%;
     margin-top: 5%; 
-    margin-left: 15%; 
+    margin-left: 20%; 
     width: 60%;
     height: 60%;
     z-index:3;
     background-color: var(--color3);
+}
+.modal_panel_1{
+    position:absolute;
+    overflow:hidden;
+    margin-top: 5%; 
+    margin-left: 35%; 
+    width: 30%;
+    height: 60%;
+    z-index:3;
+    background-color: var(--color3);
+}
+.title_panel{
+    width: 100%;
+    color:var(--color4);
+    padding-left: 10px;
+    background-color: var(--color6);
+}
+.body_panel{
+    padding: 5%;
+    width: 100%;
 }
 .nav{
     height: 5%;
@@ -185,6 +204,20 @@ body{
 .table>tbody>tr>td{
     border-bottom: 1pt solid var(--color7);
 }
+
+.table_left{
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+}
+
+.table_left>thead>tr>th{
+    border-bottom: 2pt solid var(--color7);
+}
+.table_left>tbody>tr>td{
+    border-bottom: 1pt solid var(--color7);
+}
+
 .table_form{
     text-align: right;
     border-collapse: collapse;

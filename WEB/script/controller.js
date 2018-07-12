@@ -4,28 +4,14 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
     $scope.tab = 1;
     $scope.modal = 0;
     $scope.productos ={};
+    $scope.value_categoria={};
     $scope.categorias={};
     $scope.unidades_medida={};
     $scope.marca={};
     $scope.marcas={};
-    
-    $scope.setTab = function(newTab){
-      $scope.tab = newTab;
-    };
-    $scope.isSet = function(tabNum){
-      return $scope.tab === tabNum;
-    };
+    $scope.isPost=true;   
 
-    $scope.setModal = function(newModal){
-        $scope.modal = newModal;
-    };
-    $scope.isSetModalPanel = function(modalNum){
-        return $scope.modal === modalNum;
-    };
-    $scope.isSetModal = function(){
-        return $scope.modal > 0;
-    };
-
+    //productos
     $scope.get_productos=function(){     
         $http.post(url+"get_products", {
 
@@ -37,6 +23,8 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
             console.log(err);
         });
     };
+
+    //Categorias
     $scope.get_categorias=function(){     
         $http.post(url+"get_categorias", {
 
@@ -49,6 +37,57 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
         });
     };
 
+    $scope.post_categoria=function(){     
+        
+        $http.post(url+"post_categoria", {
+            nombreCategoria:$scope.value_categoria.nombreCategoria
+        })
+        .success(function(data,status,headers,config){
+            $scope.get_categorias();
+        })
+        .error(function(err,status,headers,config){
+            console.log(err);
+        });
+ 
+    };
+    
+    $scope.put_categoria=function(){     
+
+        $http.post(url+"put_categoria", {
+
+        })
+        .success(function(data,status,headers,config){
+            
+        })
+        .error(function(err,status,headers,config){
+            console.log(err);
+        });
+    };
+    
+    $scope.delete_categoria=function(){
+
+        for (i = 0; i < $scope.categorias.length; i++) {
+            if($scope.categorias[i].value){
+                $scope.value_categoria=$scope.categorias[i];
+            }
+        }
+        
+        $http.post(url+"delete_categoria", {
+            id_categoria:$scope.value_categoria.id_categoria
+        })
+        .success(function(data,status,headers,config){
+            $scope.get_categorias();
+        })
+        .error(function(err,status,headers,config){
+            console.log(err);
+        });
+
+        
+         //   $scope.get_categorias();
+       //     $scope.value_categoria={};
+       
+    };
+    //Unidades de medida
     $scope.get_unidades_medida=function(){     
         $http.post(url+"get_unidades_medida", {
 
@@ -97,6 +136,27 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
     };
 
     $scope.getMarcas();
+    $scope.setTab = function(newTab){
+        $scope.tab = newTab;
+    };
+    $scope.isSet = function(tabNum){
+        return $scope.tab === tabNum;
+    };
 
+    $scope.setModalPost = function(newModal){
+        $scope.isPost=true;
+        $scope.modal = newModal;
+    };
+    
+    $scope.setModalPut = function(newModal){
+        $scope.isPost=false;
+        $scope.modal = newModal;
+    };
+    $scope.isSetModalPanel = function(modalNum){
+        return $scope.modal === modalNum;
+    };
+    $scope.isSetModal = function(){
+        return $scope.modal > 0;
+    };
 
 }]);
