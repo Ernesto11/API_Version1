@@ -26,7 +26,20 @@ public class Controlador {
 	public List<Unidad_Medida> obtener_unidades_medida(){
 		return gu.Obtener_unidades_medida();
 	}
+	public Unidad_Medida obtener_unidad_medida_id(int id) {
+		return gu.obtener_unidad_medida_id(id);
+	}
+	public void crear_unidadMedida(Unidad_Medida pUnidad){
+		gu.crear_unidadMedida(pUnidad);
+	}
 	
+	public void editar_unidadMedida(Unidad_Medida pUnidad){
+		gu.editar_unidadMedida(pUnidad);
+	}
+	
+	public void eliminar_unidad_medida(int id){
+		gu.eliminar_unidad_medida(id);
+	}
 	//METODOS GESTOR MARCA
 	public Marca obtenerMarcaId(int id){
 		return gm.obtenerMarcaId(id);

@@ -67,6 +67,38 @@ public class API{
 	public List<Unidad_Medida> get_unidades_medida(){
 		return controlador.obtener_unidades_medida();
 	}
+	@POST
+	@Path("/get_unidad_medida_id")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Unidad_Medida get_unidad_medida_id(Unidad_Medida um){
+		return controlador.obtener_unidad_medida_id(um.getId_UnidadMedida());
+	}
+	@POST
+	@Path("/post_unidad_medida")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public DTO_mensaje crear_unidadMedida(Unidad_Medida pUnidad){
+		controlador.crear_unidadMedida(pUnidad);
+		return null;
+	}
+	
+	@POST
+	@Path("/put_unidad_medida")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public DTO_mensaje editar_unidadMedida(Unidad_Medida pUnidad){
+		controlador.editar_unidadMedida(pUnidad);
+		return null;
+	}
+	@POST
+	@Path("/delete_unidad_medida")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public DTO_mensaje eliminar_unidad_medida(Unidad_Medida pUnidad){
+		controlador.eliminar_unidad_medida(pUnidad.getId_UnidadMedida());
+		return null;
+	}
 	
 	//Metodos Productos
 	@POST
