@@ -21,6 +21,15 @@ public class Controlador {
 	public List<Producto> obtener_productos(){
 		return gp.obtener_productos();
 	}
+	public void insertar_producto(Producto pProducto){
+		gp.insertar_producto(pProducto);
+	}	
+	public void editar_producto(Producto pProducto){
+		gp.editar_producto(pProducto);
+	}
+	public void desechar_producto(int pId_producto, int pCantidadDesecho){
+		gp.desechar_producto(pId_producto, pCantidadDesecho);
+	}
 	
 	//Metodos Unidades de Medida
 	public List<Unidad_Medida> obtener_unidades_medida(){

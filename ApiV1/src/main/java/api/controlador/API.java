@@ -102,7 +102,7 @@ public class API{
 	
 	//Metodos Productos
 	@POST
-	@Path("/get_product_id")
+	@Path("/get_producto_id")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	public Producto get_product_id(Producto pProducto){
@@ -110,33 +110,42 @@ public class API{
 		return controlador.obtener_producto_id(id);
 	}
 	@POST
-	@Path("/get_products")
+	@Path("/get_productos")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	public List<Producto> get_products(){
 		return controlador.obtener_productos();
 	}
 	@POST
-	@Path("/post_product")
+	@Path("/desechar_producto")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public DTO_mensaje desechar_producto(Producto p){
+		controlador.desechar_producto(p.getId_producto(), p.getCantidadDisponible());
+		return null;
+	}
+	@POST
+	@Path("/post_producto")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	public DTO_mensaje post_product(Producto p){
+		controlador.insertar_producto(p);
 		return null;
 	}
-	
 	@POST
-	@Path("/delete_product")
+	@Path("/delete_producto")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	public DTO_mensaje delete_product(Producto p){
+		
 		return null;
 	}
-
 	@POST
-	@Path("/put_product")
+	@Path("/put_producto")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	public DTO_mensaje put_product(Producto p){
+		controlador.editar_producto(p);
 		return null;
 	}
 	
@@ -183,11 +192,4 @@ public class API{
 	public List<Marca> getMarcas(){
 		return controlador.obtenerMarcas();
 	}
-	
-	
-	
-	
-
-	
-	
 }
