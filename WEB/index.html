@@ -8,6 +8,8 @@
         <!--script-->
         <script src="script/angular.min.js"></script>
         <script src="script/controller.js"></script>
+        <!--icon-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body  ng-app="APP" ng-controller="Controller">
         <a href ng-click="setModalPost(0)">
@@ -18,11 +20,14 @@
                     <h1>Crear Producto</h1>
                 </div>
                 <div class="body_panel">
-                        <form class="form" action="">    
+                        <form  class="form"  action="http://localhost:8686/ApiV1/rest/api/upload" method="POST" enctype="multipart/form-data">    
                                 <table class="table_form_left"> 
                                     <tr>
-                                        <td>
-                                            imagen
+                                    <td>
+                                    <label id="#bb"> 
+                                        <i class="large material-icons" style="font-size: 50px; color:#9d9d9d;">insert_photo</i>
+                                        <input type="file"  name="file" id="file" style="display: none;"/>    
+                                    </label> 
                                         </td>
                                         <td>
                                             Nombre del producto <br>
