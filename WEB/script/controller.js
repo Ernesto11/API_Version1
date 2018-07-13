@@ -44,6 +44,8 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
         })
         .success(function(data,status,headers,config){
             $scope.get_categorias();
+            $scope.modal=0;
+            $scope.value_categoria={};
         })
         .error(function(err,status,headers,config){
             console.log(err);
@@ -52,12 +54,16 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
     };
     
     $scope.put_categoria=function(){     
+ 
 
         $http.post(url+"put_categoria", {
-
+            id_categoria: $scope.value_categoria.id_categoria,
+            nombreCategoria: $scope.value_categoria.nombreCategoria
         })
         .success(function(data,status,headers,config){
-            
+            $scope.get_categorias();
+            $scope.modal=0;
+            $scope.value_categoria={};
         })
         .error(function(err,status,headers,config){
             console.log(err);
@@ -68,7 +74,8 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
 
         for (i = 0; i < $scope.categorias.length; i++) {
             if($scope.categorias[i].value){
-                $scope.value_categoria=$scope.categorias[i];
+                $scope.value_categoria.id_categoria=$scope.categorias[i].id_categoria;
+                $scope.value_categoria.nombreCategoria=$scope.categorias[i].nombreCategoria;
             }
         }
         
@@ -77,6 +84,7 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
         })
         .success(function(data,status,headers,config){
             $scope.get_categorias();
+            $scope.value_categoria={};
         })
         .error(function(err,status,headers,config){
             console.log(err);
@@ -149,6 +157,13 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
     };
     
     $scope.setModalPut = function(newModal){
+        if(newModal===3){
+            for (i = 0; i < $scope.categorias.length; i++) {
+                if($scope.categorias[i].value){
+                    $scope.value_categoria=$scope.categorias[i];
+                }
+            }
+        }
         $scope.isPost=false;
         $scope.modal = newModal;
     };

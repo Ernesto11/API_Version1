@@ -84,7 +84,8 @@
 
         <div class="modal_panel_1" ng-show="isSetModalPanel(3)">
                 <div class="title_panel">
-                        <h1>Crear Categoria</h1>
+                        <h1 ng-show="isPost">Crear Categoria</h1>
+                        <h1 ng-show="!isPost">Editar Categoria</h1>
                 </div>
                 <div class="body_panel">
                     <form class="form" action="">    
