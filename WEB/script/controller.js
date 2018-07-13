@@ -1,4 +1,5 @@
 var app = angular.module('APP',[]);
+
 app.controller('Controller', ['$scope','$http', function($scope,$http) {
     var url = "http://localhost:8686/ApiV1/rest/api/";
     $scope.tab = 1;
@@ -10,7 +11,11 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
     $scope.marca={};
     $scope.marcas={};
     $scope.isPost=true;   
-
+    $scope.imagen="";
+    $scope.subir_imagen=function(){
+        $scope.imagen= document.getElementById("file").value;
+        console.log($scope.imagen);
+    };
     //productos
     $scope.get_productos=function(){     
         $http.post(url+"get_products", {
