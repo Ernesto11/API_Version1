@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <meta charset="UTF-8">
+        <!--style-->
+        <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="style/style_responsive.css">
+        <!--script-->
+        <script src="script/angular.min.js"></script>
+        <script src="script/controller.js"></script>
+        <!--icon-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body  ng-app="APP" ng-controller="Controller">
         
-        <form action="http://localhost:8686/ApiV1/rest/api/upload" method="POST" enctype="multipart/form-data">
-            <label for="file">
-                selecionar archivo
-            </label>
-            <input type="file" name="file"><br>
-            <input type="submit" value="Subir">
-        </form>            
+        <label id="#bb"> 
+                <i class="large material-icons" style="font-size: 50px; color:#9d9d9d;">insert_photo</i>
+            <input type="file" id="file" #imgFileInput file-select="fileToUpload" style="display: none;"  />
+              
+                </label> 
+                <div>image.file: {{imagen}}</div> 
+                <img src="http://localhost:8686/ApiV1/rest/api/get"> 
     </body>
 </html>

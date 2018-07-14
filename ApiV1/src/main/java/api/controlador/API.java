@@ -10,16 +10,19 @@ import java.io.OutputStream;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 
 import com.sun.jersey.core.header.FormDataContentDisposition;
 import com.sun.jersey.multipart.FormDataParam;
 
 import org.codehaus.jettison.json.JSONArray;
+
 
 
 
@@ -59,6 +62,19 @@ public class API{
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+	}
+	
+	@GET
+	@Path("/get")
+	@Produces("image/png")
+	public Response file(){
+		String location = getClass().getProtectionDomain().getCodeSource().getLocation().toString().substring(6);
+		String uploadedFileLocation = location +"api/controlador/archivo/"+"test.png";
+
+		File f = new File(uploadedFileLocation);
+		ResponseBuilder response = Response.ok((Object)f);
+		response.header("Content-Disposition","attachment; filename=get-test.png");
+		return response.build();
 	}
 	//Metodos Categorias
 	@POST
