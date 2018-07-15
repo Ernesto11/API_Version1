@@ -12,6 +12,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
@@ -65,15 +66,15 @@ public class API{
 	}
 	
 	@GET
-	@Path("/get")
+	@Path("/img/{name}")
 	@Produces("image/png")
-	public Response file(){
+	public Response file(@PathParam( "name" ) String name){
 		String location = getClass().getProtectionDomain().getCodeSource().getLocation().toString().substring(6);
-		String uploadedFileLocation = location +"api/controlador/archivo/"+"test.png";
+		String uploadedFileLocation = location +"api/controlador/archivo/"+name;
 
 		File f = new File(uploadedFileLocation);
 		ResponseBuilder response = Response.ok((Object)f);
-		response.header("Content-Disposition","attachment; filename=get-test.png");
+		response.header("Content-Disposition","attachment; filename="+name);
 		return response.build();
 	}
 	//Metodos Categorias

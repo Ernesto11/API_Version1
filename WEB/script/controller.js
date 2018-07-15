@@ -148,7 +148,7 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
         });
     };
 
-    $scope.getMarcas();
+//    $scope.getMarcas();
     $scope.setTab = function(newTab){
         $scope.tab = newTab;
     };
