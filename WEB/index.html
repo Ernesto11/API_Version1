@@ -120,36 +120,41 @@
                 
         </div>
 
-        <div class="modal_panel_1" ng-show="isSetModalPanel(5)">
-                <div class="title_panel">
-                        <h1>Crear Marca</h1>
-                </div>
-                <div class="body_panel">
-                    <form class="form" action="">    
-                            <table class="table_form_left"> 
-                                <tr>
-                                <br>
-                                <br>
-                                    <td>
-                                        Nombre de la Marca:
-                                        <br>
-                                        <br>
-                                        <input type="text" ng-model="marca.nombre"><br>
-                                    </td>
-                                </tr>
-                            </table>
-                                    <td>
-                                        <br>
-                                        <br>
-                                        <input type="submit" ng-click="putMarca()" class="btn" value="Crear Marca">
-                                        <button class="btn" ng-click="setModalPost(0)">Cerrar</button>
-                                    </td>
-                                </tr>                                                              
-                            </table>
-                        </form>
-                </div>
-        </div>
 
+        <div class="modal_panel_1" ng-show="isSetModalPanel(5)">
+            <div class="title_panel">
+                    <h1 ng-show="isPost">Crear Marca</h1>
+                    <h1 ng-show="!isPost">Editar Marca</h1>
+            </div>
+            <div class="body_panel">
+                <form class="form" action="">    
+                        <table class="table_form_left"> 
+                            <tr>
+                            <br>
+                            <br>
+                                <td>
+                                    Nombre de la Marca:
+                                    <br>
+                                    <br>
+                                    <input type="text" ng-model="value_marca.nombre"><br>
+                                </td>
+                            </tr>
+                        </table>
+                                <td>
+                                    <br>
+                                    <br>
+                                    <input type="submit" ng-click="post_marca()" ng-show="isPost" class="btn" value="Crear Marca">
+                                    <input type="submit" ng-click="put_marca()"  ng-show="!isPost" class="btn" value="Editar Marca">
+                                    <button class="btn" ng-click="setModalPost(0)">Cerrar</button>
+                                </td>
+                            </tr>                                                              
+                        </table>
+                    </form>
+            </div>
+            
+    </div>        
+
+        
         <div class="all">
             <div class="nav">
                 <div class="menu">
@@ -289,7 +294,7 @@
                         <h2>Marca</h2>
                         <br>
                         <button class="btn" ng-click="setModalPost(5)">Crear</button>
-                        <button class="btn" ng-click="setModal(5)">Eliminar</button>
+                        <button class="btn" ng-click="delete_marca()">Eliminar</button>
                         <button class="btn" ng-click="setModalPut(5)">Modificar</button>
                         <br> 
                         <br>
@@ -298,14 +303,12 @@
                                 <thead>
                                     <tr>
                                         <th scope="col"></th>
-                                        <th scope="col">Identificador</th>
                                         <th scope="col">Nombre Marca</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="marca in marcas">
                                         <td> <input type="checkbox" ng-model="marca.value"></td>
-                                        <td>{{marca.id_marca}}</td>
                                         <td>{{marca.nombre}}</td>
                                     </tr>
                                 </tbody>

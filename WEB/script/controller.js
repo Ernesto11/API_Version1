@@ -6,12 +6,13 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
     $scope.modal = 0;
     $scope.productos ={};
     $scope.value_categoria={};
+    $scope.value_marca={};
     $scope.categorias={};
     $scope.unidades_medida={};
-    $scope.marca={};
     $scope.marcas={};
     $scope.isPost=true;   
     $scope.imagen="";
+
     $scope.subir_imagen=function(){
         $scope.imagen= document.getElementById("file").value;
         console.log($scope.imagen);
@@ -120,7 +121,7 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
     // Funciones marca
 
     
-    $scope.getMarcas=function(){     
+    $scope.get_marcas=function(){     
         $http.post(url+"get_marcas", {
 
         })
@@ -133,20 +134,61 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
         });
     };
 
-    $scope.putMarca=function(){     
-        $http.post(url+"put_marca", {
-            id_marca: $scope.marca.id_marca,
-            nombre: $scope.marca.nombre
+    $scope.post_marca=function(){     
+        
+        $http.post(url+"post_marca", {
+            nombre:$scope.value_marca.nombre
         })
         .success(function(data,status,headers,config){
-            $scope.marca.nombre ="";
-            $scope.marca.id_marca ="";
-            $scope.getMarcas();
+            $scope.get_marcas();
+            $scope.modal=0;
+            $scope.value_marca={};
+        })
+        .error(function(err,status,headers,config){
+            console.log(err);
+        });
+ 
+    };
+
+    $scope.put_marca=function(){     
+ 
+
+        $http.post(url+"put_marca", {
+            id_marca: $scope.value_marca.id_marca,
+            nombre: $scope.value_marca.nombre
+        })
+        .success(function(data,status,headers,config){
+            $scope.get_marcas();
+            $scope.modal=0;
+            $scope.value_marca={};
         })
         .error(function(err,status,headers,config){
             console.log(err);
         });
     };
+
+    $scope.delete_marca=function(){
+
+        for (i = 0; i < $scope.marcas.length; i++) {
+            if($scope.marcas[i].value){
+                $scope.value_marca.id_marca=$scope.marcas[i].id_marca;
+                $scope.value_marca.nombre=$scope.marcas[i].nombre;
+                $http.post(url+"delete_marca", {
+                    id_marca:$scope.value_marca.id_marca
+                })
+                .success(function(data,status,headers,config){
+                    $scope.get_marcas();
+                    $scope.value_marca={};
+                })
+                .error(function(err,status,headers,config){
+                    console.log(err);
+                });
+            }
+        }
+        
+
+    };
+
 
 //    $scope.getMarcas();
     $scope.setTab = function(newTab){
@@ -169,9 +211,17 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
                 }
             }
         }
+        if(newModal===5){
+            for (i = 0; i < $scope.marcas.length; i++) {
+                if($scope.marcas[i].value){
+                    $scope.value_marca=$scope.marcas[i];
+                }
+            }
+        }
         $scope.isPost=false;
         $scope.modal = newModal;
     };
+
     $scope.isSetModalPanel = function(modalNum){
         return $scope.modal === modalNum;
     };

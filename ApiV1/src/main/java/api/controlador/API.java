@@ -216,7 +216,7 @@ public class API{
 	}
 	
 	@POST
-	@Path("/put_marca")
+	@Path("/post_marca")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	public DTO_mensaje putMarca(Marca pNvaMarca){
@@ -234,7 +234,7 @@ public class API{
 	}
 	
 	@POST
-	@Path("/edit_marca")
+	@Path("/put_marca")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	public DTO_mensaje editMarca(Marca pMarca){
