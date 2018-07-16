@@ -1,5 +1,29 @@
 var app = angular.module('APP',[]);
 
+app.filter('searchFilter', function() {
+    return function(arr, searchString,page,size_page,scope,index) {
+        
+        if(!searchString) {
+            scope.total_page=Math.ceil(arr.length/size_page);
+            
+            return arr.slice(page*size_page,(page+1)*size_page);
+        }
+
+        searchString =angular.lowercase(searchString) ;
+
+        var result = [];
+
+        angular.forEach(arr, function(el){
+            if( angular.lowercase(el[index]).indexOf(searchString) != -1) {
+                result.push(el);
+            }
+        });
+        scope.total_page=Math.ceil(result.length/size_page);
+        
+        return result.slice(page*size_page,(page+1)*size_page);
+    };
+});
+
 app.controller('Controller', ['$scope','$http', function($scope,$http) {
     var url = "http://localhost:8686/ApiV1/rest/api/";
     $scope.tab = 1;
@@ -12,6 +36,36 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
     $scope.marcas={};
     $scope.isPost=true;   
     $scope.imagen="";
+    $scope.tests=[{value:"alla"},{value:"a2"},{value:"a3"},{value:"ass4"},{value:"a5"},
+                  {value:"asa"},{value:"a7ss"},{value:"a8s"},{value:"aa9"},{value:"a0"},
+                  {value:"aal"},{value:"aba"},{value:"acs"},{value:"ads"},{value:"ae"},
+                  {value:"afa"},{value:"aga"},{value:"ahs"},{value:"aiaa"},{value:"aj"},
+                  {value:"bafa"},{value:"baga"},{value:"bahs"},{value:"baiaa"},{value:"baj"},
+                  {value:"bafa"},{value:"baga"},{value:"bahs"},{value:"baiaa"},{value:"baj"}];
+    //Math.ceil($scope.tests.length/5)
+    $scope.page=0;
+    $scope.total_page=0;
+    //paginacion
+    $scope.range=function(star,end){
+        var range = [];
+        for(var i=star;i<end;i++){
+            range.push(i);
+        }
+        return range;
+    }
+    $scope.pageAdd=function(){
+        $scope.page=$scope.page+1;
+    }
+    $scope.pageSet=function(page){
+        $scope.page=page;
+    }
+    $scope.pageSub=function(){
+        $scope.page=$scope.page-1;
+    }
+    $scope.paginacion= function(lista,sub,page){
+        return lista.slice(page*sub,(page+1)*sub);
+    }
+    //imagen
     $scope.subir_imagen=function(){
         $scope.imagen= document.getElementById("file").value;
         console.log($scope.imagen);
