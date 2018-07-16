@@ -27,11 +27,13 @@ import org.codehaus.jettison.json.JSONArray;
 
 
 
+
 import api.controlador.DTO.DTO_mensaje;
 import api.modelo.Categoria;
 import api.modelo.Marca;
 import api.modelo.Producto;
 import api.modelo.Unidad_Medida;
+import api.modelo.Usuario;
 
 @Path("/api")
 public class API{
@@ -216,7 +218,7 @@ public class API{
 	}
 	
 	@POST
-	@Path("/put_marca")
+	@Path("/post_marca")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	public DTO_mensaje putMarca(Marca pNvaMarca){
@@ -231,22 +233,43 @@ public class API{
 	public DTO_mensaje deleteMarca(Marca pMarca){
 		controlador.eliminarMarca(pMarca);
 		return null;
-	}
-	
+	}	
 	@POST
-	@Path("/edit_marca")
+	@Path("/put_marca")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	public DTO_mensaje editMarca(Marca pMarca){
 		controlador.editarMarca(pMarca);
 		return null;
-	}
-	
+	}	
 	@POST
 	@Path("/get_marcas")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	public List<Marca> getMarcas(){
 		return controlador.obtenerMarcas();
+	}
+	@POST
+	@Path("/post_usuario")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public DTO_mensaje post_usuario(Usuario user){
+		controlador.insertar_usuario(user);;
+		return null;
+	}
+	@POST
+	@Path("/get_usuarios")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<Usuario> get_usuarios(){
+		return controlador.obtener_usuarios();
+	}
+	@POST
+	@Path("/delete_usuario")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public DTO_mensaje delete_usuario(Usuario user){
+		controlador.eliminar_usuario(user);
+		return null;
 	}
 }

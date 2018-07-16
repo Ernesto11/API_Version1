@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!--style-->
+        <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="style/style_responsive.css">
+        <!--script-->
+        <script src="script/angular.min.js"></script>
+        <script src="script/controller.js"></script>
+        <!--icon-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body  ng-app="APP" ng-controller="Controller">
+        <a href ng-click="setModalPost(0)">
+            <div ng-class="{ modal: isSetModal() }" ng-show="isSetModal()" ></div>
+        </a>
+        <div class="modal_panel" ng-show="isSetModalPanel(1)">
+                <div class="title_panel">
+                    <h1>Crear Producto</h1>
+                </div>
+                <div class="body_panel">
+                        <form  class="form"  action="http://localhost:8686/ApiV1/rest/api/upload" method="POST" enctype="multipart/form-data">    
+                                <table class="table_form_left"> 
+                                    <tr>
+                                    <td>
+                                    <label id="#bb"> 
+                                        <i class="large material-icons" style="font-size: 50px; color:#9d9d9d;">insert_photo</i>
+                                        <input type="file"  name="file" id="file" style="display: none;"/>    
+                                    </label> 
+                                        </td>
+                                        <td>
+                                            Nombre del producto <br>
+                                            <input type="text"><br>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br>
+                                <br>
+                                <table class="table_form">
+                                    <tr>
+                                        <td>Precio:</td>
+                                        <td><input type="number"><br></td>
+                                        <td>Unidad Medida:</td>
+                                        <td>
+                                            <select>    
+                                                <option ng-repeat="unidad_medida in unidades_medida" value="unidad_medida.id_UnidadMedida">{{ unidad_medida.simbolo+"-"+unidad_medida.nombreUnidadMedida}}</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Costo:</td>
+                                        <td><input type="number"><br></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Impuesto:</td>
+                                        <td><input type="number"><br></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>  
+                                    <tr>
+                                        <td>Categoria:</td>
+                                        <td>         
+                                            <select>
+                                                <option ng-repeat="categoria in categorias" value="categoria.id_categoria">{{categoria.nombreCategoria}}</option>
+                                            </select>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <input type="submit" class="btn" value="Crear">
+                                            <button class="btn" ng-click="setModalPost(0)">Cerrar</button>
+                                        </td>
+                                    </tr>                                                              
+                                </table>
+                                
+                            </form>
+                            
+                </div>
+                
+        </div>
+
+        <div class="modal_panel_1" ng-show="isSetModalPanel(3)">
+                <div class="title_panel">
+                        <h1 ng-show="isPost">Crear Categoria</h1>
+                        <h1 ng-show="!isPost">Editar Categoria</h1>
+                </div>
+                <div class="body_panel">
+                    <form class="form" action="">    
+                            <table class="table_form_left"> 
+                                <tr>
+                                <br>
+                                <br>
+                                    <td>
+                                        Nombre de la Categoria:
+                                        <br>
+                                        <br>
+                                        <input type="text" ng-model="value_categoria.nombreCategoria"><br>
+                                    </td>
+                                </tr>
+                            </table>
+                                    <td>
+                                        <br>
+                                        <br>
+                                        <input type="submit" ng-click="post_categoria()" ng-show="isPost" class="btn" value="Crear Categoria">
+                                        <input type="submit" ng-click="put_categoria()"  ng-show="!isPost" class="btn" value="Editar Categoria">
+                                        <button class="btn" ng-click="setModalPost(0)">Cerrar</button>
+                                    </td>
+                                </tr>                                                              
+                            </table>
+                        </form>
+                </div>
+                
+        </div>
+
+
+        <div class="modal_panel_1" ng-show="isSetModalPanel(5)">
+            <div class="title_panel">
+                    <h1 ng-show="isPost">Crear Marca</h1>
+                    <h1 ng-show="!isPost">Editar Marca</h1>
+            </div>
+            <div class="body_panel">
+                <form class="form" action="">    
+                        <table class="table_form_left"> 
+                            <tr>
+                            <br>
+                            <br>
+                                <td>
+                                    Nombre de la Marca:
+                                    <br>
+                                    <br>
+                                    <input type="text" ng-model="value_marca.nombre"><br>
+                                </td>
+                            </tr>
+                        </table>
+                                <td>
+                                    <br>
+                                    <br>
+                                    <input type="submit" ng-click="post_marca()" ng-show="isPost" class="btn" value="Crear Marca">
+                                    <input type="submit" ng-click="put_marca()"  ng-show="!isPost" class="btn" value="Editar Marca">
+                                    <button class="btn" ng-click="setModalPost(0)">Cerrar</button>
+                                </td>
+                            </tr>                                                              
+                        </table>
+                    </form>
+            </div>
+            
+    </div>        
+
+        
+        <div class="all">
+            <div class="nav">
+                <div class="menu">
+                    <ul>
+                        <li><a href="administracion.html">Administración</a></li>
+                        <li><a href="inventario.html">Inventario</a></li>
+                        <li><a href="#3">Menu 3</a></li>
+                    </ul>
+                </div>
+                <div class="login">Admin</div>
+            </div>
+            <div class="body">
+                <div class="sub_menu">
+                    <div class="logo"><a href="index.html"><h1>Fenrir</h1></a></div>
+                    <div class="list">
+                        <strong>Tablero</strong>
+                        <br>
+                        <br>
+                        <strong>Operaciones</strong>
+                        <ul>
+                            <li ng-class="{ active: isSet(1) }"><a href ng-click="setTab(1)">Inventario</a></li>
+                            <li ng-class="{ active: isSet(2) }"><a href ng-click="setTab(2)">Desecho</a></li>
+                        </ul>
+                        <strong>Datos principales</strong>
+                        <ul>
+                            <li ng-class="{ active: isSet(3) }"><a href ng-click="setTab(3)">Producto</a></li>
+                            <li ng-class="{ active: isSet(4) }"><a href ng-click="setTab(4)">Categoria</a></li>
+                            <li ng-class="{ active: isSet(5) }"><a href ng-click="setTab(5)">Marca</a></li>
+                            <li ng-class="{ active: isSet(6) }"><a href ng-click="setTab(6)">Unidades de medida</a></li>
+                        </ul>
+                        <strong>Informes</strong>
+                        <ul>
+                            <li ng-class="{ active: isSet(7) }"><a href ng-click="setTab(7)">Recuperar inventario actual</a></li>
+                            <li ng-class="{ active: isSet(8) }"><a href ng-click="setTab(8)">Valoracion del inventario</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="sub_panel" ng-show="isSet(1)">
+                        <h2>Inventario</h2>
+                        <br>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"> </th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Costo</th>
+                                    <th scope="col">Impuesto</th>
+                                    <th scope="col">Cantidad disponible</th>
+                                    <th scope="col">Cantidad minima</th>
+                                    <th scope="col">Cantidad maxima</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="producto in productos">
+                                    <td> <input type="checkbox" ng-model="producto.value"></td>
+                                    <td>{{producto.nombre}}</td>
+                                    <td>{{producto.precio | currency : "₡"}}</td>
+                                    <td>{{producto.costo | currency : "₡"}}</td>
+                                    <td>{{producto.impuesto | currency : "%" }}</td>
+                                    <td>{{producto.cantidadDisponible}}</td>
+                                    <td>{{producto.cantidadMinima}}</td>
+                                    <td>{{producto.cantidadMaxima}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                    <div class="sub_panel" ng-show="isSet(2)">
+                        <h2>Desecho</h2>
+                        
+                    </div>
+                    <div class="sub_panel" ng-show="isSet(3)">
+                        <h2>Producto</h2>
+                        <br>
+                        <button class="btn" ng-click="setModalPost(1)">Crear</button>
+                        <button class="btn" ng-click="setModal(1)">Eliminar</button>
+                        <button class="btn" ng-click="setModalPut(1)">Modificar</button>
+                        <br>
+                        <br>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> </th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Precio</th>
+                                        <th scope="col">Costo</th>
+                                        <th scope="col">Impuesto</th>
+                                        <th scope="col">Cantidad disponible</th>
+                                        <th scope="col">Cantidad minima</th>
+                                        <th scope="col">Cantidad maxima</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="producto in productos">
+                                        <td> <input type="checkbox" ng-model="producto.value"></td>
+                                        <td>{{producto.nombre}}</td>
+                                        <td>{{producto.precio | currency : "₡"}}</td>
+                                        <td>{{producto.costo | currency : "₡"}}</td>
+                                        <td>{{producto.impuesto | currency : "%" }}</td>
+                                        <td>{{producto.cantidadDisponible}}</td>
+                                        <td>{{producto.cantidadMinima}}</td>
+                                        <td>{{producto.cantidadMaxima}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sub_panel" ng-show="isSet(4)"><h2>Categoria</h2>
+                        <br>
+                        <button class="btn" ng-click="setModalPost(3)">Crear</button>
+                        <button class="btn" ng-click="delete_categoria()">Eliminar</button>
+                        <button class="btn" ng-click="setModalPut(3)">Modificar</button>
+                        <br>
+                        <br>
+                        <div >
+                            <table class="table_left">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Nombre Categoria</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="categoria in categorias">
+                                        <td> <input type="checkbox" ng-model="categoria.value"></td>
+                                        <td>{{categoria.nombreCategoria}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>                    
+                        </div>
+                    </div>
+                    
+                    <div class="sub_panel" ng-show="isSet(5)">
+                        <h2>Marca</h2>
+                        <br>
+                        <button class="btn" ng-click="setModalPost(5)">Crear</button>
+                        <button class="btn" ng-click="delete_marca()">Eliminar</button>
+                        <button class="btn" ng-click="setModalPut(5)">Modificar</button>
+                        <br> 
+                        <br>
+                        <div >
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Nombre Marca</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="marca in marcas">
+                                        <td> <input type="checkbox" ng-model="marca.value"></td>
+                                        <td>{{marca.nombre}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>                    
+                        </div>
+                    </div>
+                    
+                    <div class="sub_panel" ng-show="isSet(6)"><h2>Unidades de medida</h2>    
+                      
+                    </div>
+                    <div class="sub_panel" ng-show="isSet(7)"><h2>Recuperar inventario actual</h2></div>
+                    <div class="sub_panel" ng-show="isSet(8)"><h2>Valoracion del inventario</h2></div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -6,6 +6,7 @@ import api.modelo.Categoria;
 import api.modelo.Marca;
 import api.modelo.Producto;
 import api.modelo.Unidad_Medida;
+import api.modelo.Usuario;
 
 
 public class Controlador {
@@ -13,7 +14,19 @@ public class Controlador {
 	private Gestor_Marca gm = new Gestor_Marca();
 	private Gestor_Categoria gc = new Gestor_Categoria();
 	private Gestor_Unidad_Medida gu = new Gestor_Unidad_Medida();
+	private Gestor_Usuario guser = new Gestor_Usuario();
 	
+	//MEtodos usuario
+	
+	public void insertar_usuario(Usuario pUsuario){
+		guser.crearUsuario(pUsuario);
+	}
+	public List<Usuario> obtener_usuarios(){
+		return guser.obtenerUsuarios();
+	}
+	public void eliminar_usuario(Usuario pUsuario){
+		guser.eliminar_usuario(pUsuario);
+	}
 	//Metodos Producto
 	public Producto obtener_producto_id (int id){
 		return gp.obtener_producto_id(id);

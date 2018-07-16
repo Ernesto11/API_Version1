@@ -3,8 +3,12 @@ package api.controlador.DAO;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import api.modelo.Categoria;
+import api.modelo.Marca;
 import api.modelo.Usuario;
 
 public class Dao_Usuario extends Dao_DB {
@@ -23,7 +27,7 @@ public class Dao_Usuario extends Dao_DB {
 				e.printStackTrace();
 			}
 	}
-	
+
 	public void cambiarContrasena(int id_usuario, String nvaContrasena){
 		this.conexion();
 		try {
@@ -59,11 +63,11 @@ public class Dao_Usuario extends Dao_DB {
 		return false;
 	}
 
-	public void eliminarUsuario(int id){
+	public void eliminarUsuario(String nombreUsuario){
 		this.conexion();
 		try {
 			CallableStatement statement = this.con.prepareCall("{call eliminar_usuario(?)}");
-			statement.setInt(1, id);
+			statement.setString(1, nombreUsuario);
 			statement.executeQuery();
 			statement.close();
 		} catch (SQLException e) {
@@ -80,7 +84,6 @@ public class Dao_Usuario extends Dao_DB {
 			statement.setString(1, nombreUsuario);
 			ResultSet resultado = statement.executeQuery();
 			if(resultado.next()){
-				usuario.setId_usuario(resultado.getInt("id_usuario"));
 				usuario.setNombre(resultado.getString("nombre"));
 				usuario.setContrasena(resultado.getString("contrasenna"));
 				usuario.setTipo(resultado.getString("tipo"));
@@ -92,4 +95,26 @@ public class Dao_Usuario extends Dao_DB {
 		}
 		return usuario;
 	}
+	public List<Usuario> obtener_usuarios(){
+		List<Usuario> lista = new ArrayList<Usuario>(); 
+		this.conexion();
+		try {
+			Statement estado = this.con.createStatement();
+			ResultSet resultado = estado.executeQuery("call obtener_usuarios");
+			
+			while (resultado.next()) {
+				Usuario u = new Usuario();
+				u.setNombre(resultado.getString("nombreUsuario"));
+				u.setContrasena(resultado.getString("contrasenna"));
+				u.setTipo(resultado.getString("tipo"));
+				lista.add(u);
+			}
+			resultado.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return lista;
+	}
+	
 }
