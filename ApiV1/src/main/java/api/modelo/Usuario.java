@@ -2,7 +2,6 @@ package api.modelo;
 
 public class Usuario {
 	
-	private int id_usuario;
 	private String nombre;
 	private String contrasena;
 	private String tipo;
@@ -10,16 +9,11 @@ public class Usuario {
 	
 	@Override
 	public String toString() {
-		return "Usuario [id_usuario=" + id_usuario + ", nombre=" + nombre
+		return "Usuario [id_usuario=" + ", nombre=" + nombre
 				+ ", contrasena=" + contrasena + ", tipo=" + tipo + "]";
 	}
 	//GETTERS AND SETTERS
-	public int getId_usuario() {
-		return id_usuario;
-	}
-	public void setId_usuario(int id_usuario) {
-		this.id_usuario = id_usuario;
-	}
+
 	public String getNombre() {
 		return nombre;
 	}

@@ -7,9 +7,11 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
     $scope.productos ={};
     $scope.value_categoria={};
     $scope.value_marca={};
+
     $scope.categorias={};
     $scope.unidades_medida={};
     $scope.marcas={};
+
     $scope.isPost=true;   
     $scope.imagen="";
 
@@ -119,8 +121,6 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
     //$scope.get_unidades_medida();
     
     // Funciones marca
-
-    
     $scope.get_marcas=function(){     
         $http.post(url+"get_marcas", {
 
@@ -189,8 +189,6 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
 
     };
 
-
-//    $scope.getMarcas();
     $scope.setTab = function(newTab){
         $scope.tab = newTab;
     };

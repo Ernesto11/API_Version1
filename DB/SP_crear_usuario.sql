@@ -2,9 +2,9 @@ DROP PROCEDURE IF EXISTS db_erp.crear_usuario;
 
 DELIMITER $$
 CREATE PROCEDURE db_erp.crear_usuario(
-    IN pNombre varchar(10),
-    IN pContrasenna varchar(10),
-    IN pTipo varchar(10)
+    IN pNombre varchar(30),
+    IN pContrasenna varchar(12),
+    IN pTipo varchar(15)
     )
 
 BEGIN
@@ -17,7 +17,7 @@ BEGIN
     
     START TRANSACTION;
     
-    INSERT INTO db_erp.usuario(`nombre`,`contrasenna`,`tipo`) values(pNombre, pContrasenna,pTipo);
+    INSERT INTO db_erp.usuario(`nombreUsuario`,`contrasenna`,`tipo`) values(pNombre, pContrasenna,pTipo);
 
 
     COMMIT;

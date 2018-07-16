@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!--style-->
+        <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="style/style_responsive.css">
+        <!--script-->
+        <script src="script/angular.min.js"></script>
+        <script src="script/controllerAdministracion.js"></script>
+        <!--icon-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body  ng-app="APP" ng-controller="Controller">
+        <a href ng-click="setModalPost(0)">
+            <div ng-class="{ modal: isSetModal() }" ng-show="isSetModal()" ></div>
+        </a>
+
+        <div class="modal_panel_1" ng-show="isSetModalPanel(1)">
+            <div class="title_panel">
+                    <h1 ng-show="isPost">Crear Usuario</h1>
+                    <h1 ng-show="!isPost">Editar Usuario</h1>
+            </div>
+            <div class="body_panel">
+                <form class="form" action="">    
+                        <table class="table_form_left"> 
+                            <tr>
+                                <td>
+                                    Nombre de Usuario:
+                                    <br>
+                                    <input type="text" ng-model="value_usuario.nombre"><br>
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr>
+                                    <br>
+                                        <td>
+                                            Contraseña:
+                                            <br>
+                                            <input type="password" ng-model="value_usuario.contrasena"><br>
+                                            <br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                            <br>
+                                                <td>
+                                                    Repetir Contraseña:
+                                                    <br>
+                                                    <input type="password" ng-model="value_usuario.contrasena2"><br>
+                                                    <br>
+                                                </td>
+                                            </tr>
+                                    <br>
+                                        <td>
+                                            Tipo de Usuario:
+                                            <br>
+                                            <select name="tipo" ng-model="value_usuario.tipo">
+                                                    <option value="administrador" selected>Administrador</option>
+                                                    <option value="empleado">Empleado</option>
+                                                  </select>
+                                            <br>
+                                        </td>
+                                    </tr>
+                        </table>
+                                <td>
+                                    <br>
+                                    <input type="submit" ng-click="post_usuario()" ng-show="isPost" class="btn" value="Crear Usuario">
+                                    <input type="submit" ng-click="put_marca()"  ng-show="!isPost" class="btn" value="Editar Usuario">
+                                    <button class="btn" ng-click="setModalPost(0)">Cerrar</button>
+                                </td>
+                            </tr>                                                              
+                        </table>
+                    </form>
+            </div>
+            
+    </div>        
+
+        
+        <div class="all">
+            <div class="nav">
+                <div class="menu">
+                    <ul>
+                        <li><a href="administracion.html">Administración</a></li>
+                        <li><a href="inventario.html">Inventario</a></li>
+                        <li><a href="#3">Menu 3</a></li>
+                    </ul>
+                </div>
+                <div class="login">Admin</div>
+            </div>
+            <div class="body">
+                <div class="sub_menu">
+                    <div class="logo"><a href="index.html"><h1>Fenrir</h1></a></div>
+                    <div class="list">
+                        <strong>Tablero</strong>
+                        <br>
+                        <br>
+                        <strong>Operaciones</strong>
+                        <ul>
+                            <li ng-class="{ active: isSet(1) }"><a href ng-click="setTab(1)">Usuarios</a></li>
+                            <li ng-class="{ active: isSet(2) }"><a href ng-click="setTab(2)">Empresas</a></li>
+                        </ul>
+                        <strong>Datos principales</strong>
+                        <ul>
+                        </ul>
+                        <strong>Informes</strong>
+                        <ul>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="sub_panel" ng-show="isSet(1)">
+                        <h2>Usuarios</h2>
+                        <br>
+                        <button class="btn" ng-click="setModalPost(1)">Crear</button>
+                        <button class="btn" ng-click="delete_usuario()">Eliminar</button>
+                        <br>
+                        <br>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"> </th>
+                                    <th scope="col">Nombre de usuario</th>
+                                    <th scope="col">Tipo de Usuario</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="usuario in usuarios">
+                                    <td> <input type="checkbox" ng-model="usuario.value"></td>
+                                    <td>{{usuario.nombre}}</td>
+                                    <td>{{usuario.tipo}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                    <div class="sub_panel" ng-show="isSet(2)">
+                        <h2>Desecho</h2>
+                        
+                    </div>
+                    <div class="sub_panel" ng-show="isSet(3)">
+
+                        <br>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> </th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Precio</th>
+                                        <th scope="col">Costo</th>
+                                        <th scope="col">Impuesto</th>
+                                        <th scope="col">Cantidad disponible</th>
+                                        <th scope="col">Cantidad minima</th>
+                                        <th scope="col">Cantidad maxima</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="producto in productos">
+                                        <td> <input type="checkbox" ng-model="producto.value"></td>
+                                        <td>{{producto.nombre}}</td>
+                                        <td>{{producto.precio | currency : "₡"}}</td>
+                                        <td>{{producto.costo | currency : "₡"}}</td>
+                                        <td>{{producto.impuesto | currency : "%" }}</td>
+                                        <td>{{producto.cantidadDisponible}}</td>
+                                        <td>{{producto.cantidadMinima}}</td>
+                                        <td>{{producto.cantidadMaxima}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sub_panel" ng-show="isSet(4)"><h2>Categoria</h2>
+                        <br>
+                        <button class="btn" ng-click="setModalPost(3)">Crear</button>
+                        <button class="btn" ng-click="delete_categoria()">Eliminar</button>
+                        <button class="btn" ng-click="setModalPut(3)">Modificar</button>
+                        <br>
+                        <br>
+                        <div >
+                            <table class="table_left">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Nombre Categoria</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="categoria in categorias">
+                                        <td> <input type="checkbox" ng-model="categoria.value"></td>
+                                        <td>{{categoria.nombreCategoria}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>                    
+                        </div>
+                    </div>
+                    
+                    <div class="sub_panel" ng-show="isSet(5)">
+                        <h2>Marca</h2>
+                        <br>
+                        <button class="btn" ng-click="setModalPost(5)">Crear</button>
+                        <button class="btn" ng-click="delete_marca()">Eliminar</button>
+                        <button class="btn" ng-click="setModalPut(5)">Modificar</button>
+                        <br> 
+                        <br>
+                        <div >
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Nombre Marca</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="marca in marcas">
+                                        <td> <input type="checkbox" ng-model="marca.value"></td>
+                                        <td>{{marca.nombre}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>                    
+                        </div>
+                    </div>
+                    
+                    <div class="sub_panel" ng-show="isSet(6)"><h2>Unidades de medida</h2>    
+                      
+                    </div>
+                    <div class="sub_panel" ng-show="isSet(7)"><h2>Recuperar inventario actual</h2></div>
+                    <div class="sub_panel" ng-show="isSet(8)"><h2>Valoracion del inventario</h2></div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
