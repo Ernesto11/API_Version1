@@ -38,7 +38,6 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
 
     $scope.isPost=true;   
     $scope.imagen="";
-<<<<<<< HEAD
     $scope.tests=[{value:"alla"},{value:"a2"},{value:"a3"},{value:"ass4"},{value:"a5"},
                   {value:"asa"},{value:"a7ss"},{value:"a8s"},{value:"aa9"},{value:"a0"},
                   {value:"aal"},{value:"aba"},{value:"acs"},{value:"ads"},{value:"ae"},
@@ -48,7 +47,11 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
     //Math.ceil($scope.tests.length/5)
     $scope.page=0;
     $scope.total_page=0;
+    $scope.isPage=function(numPage){
+        return $scope.page===numPage;
+    }
     //paginacion
+
     $scope.range=function(star,end){
         var range = [];
         for(var i=star;i<end;i++){
@@ -69,9 +72,6 @@ app.controller('Controller', ['$scope','$http', function($scope,$http) {
         return lista.slice(page*sub,(page+1)*sub);
     }
     //imagen
-=======
-
->>>>>>> 5ef85ac1e3b1033ff8e92df928765dc371c8c775
     $scope.subir_imagen=function(){
         $scope.imagen= document.getElementById("file").value;
         console.log($scope.imagen);

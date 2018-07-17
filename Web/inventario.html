@@ -229,12 +229,32 @@
                         
                     </div>
                     <div class="sub_panel" ng-show="isSet(3)">
-                        <h2>Producto</h2>
+                        <div class="head_panel_1">
+                            <div class="title">
+                                <h2>Producto</h2>
+                            </div>
+                            <div class="buscar">
+                                <input type="text" class="input" ng-model="searchString" placeholder="Buscar">
+                            </div>
+                        </div>
                         <br>
-                        <button class="btn" ng-click="setModalPost(1)">Crear</button>
-                        <button class="btn" ng-click="setModal(1)">Eliminar</button>
-                        <button class="btn" ng-click="setModalPut(1)">Modificar</button>
-                        <br>
+                        <div class="head_panel_2">
+                                <div class="botones">
+                                        <button class="btn" ng-click="setModalPost(1)">Crear</button>
+                                        <button class="btn" ng-click="setModal(1)">Eliminar</button>
+                                        <button class="btn" ng-click="setModalPut(1)">Modificar</button>
+                                </div>
+                                
+                                <div class="page">
+                                    <a href ng-click="pageSub()">
+                                        <i class="large material-icons" style="font-size: 15px; color:#9d9d9d;">keyboard_arrow_left</i>
+                                    </a>
+                                    <a href ng-repeat="btn in range(0,total_page)" class="num" ng-class="{active:isPage(btn)}" ng-click="pageSet(btn)">{{btn}}</a>
+                                    <a href ng-click="pageAdd()">
+                                        <i class="large material-icons" style="font-size: 15px; color:#9d9d9d;">keyboard_arrow_right</i>
+                                    </a>
+                                </div>
+                            </div>
                         <br>
                         <div>
                             <table class="table">
@@ -265,11 +285,32 @@
                             </table>
                         </div>
                     </div>
-                    <div class="sub_panel" ng-show="isSet(4)"><h2>Categoria</h2>
+                    <div class="sub_panel" ng-show="isSet(4)">
+                        <div class="head_panel_1">
+                            <div class="title">
+                                <h2>Categoria</h2>
+                            </div>
+                            <div class="buscar">
+                                <input type="text" class="input" ng-model="searchString" placeholder="Buscar">
+                            </div>
+                        </div>
                         <br>
-                        <button class="btn" ng-click="setModalPost(3)">Crear</button>
-                        <button class="btn" ng-click="delete_categoria()">Eliminar</button>
-                        <button class="btn" ng-click="setModalPut(3)">Modificar</button>
+                        <div class="head_panel_2">
+                            <div class="botones">
+                                <button class="btn" ng-click="setModalPost(3)">Crear</button>
+                                <button class="btn" ng-click="delete_categoria()">Eliminar</button>
+                                <button class="btn" ng-click="setModalPut(3)">Modificar</button>
+                            </div>
+                            <div class="page">
+                                <a href ng-click="pageSub()">
+                                    <i class="large material-icons" style="font-size: 15px; color:#9d9d9d;">keyboard_arrow_left</i>
+                                </a>
+                                <a href ng-repeat="btn in range(0,total_page)" class="num" ng-class="{active:isPage(btn)}" ng-click="pageSet(btn)">{{btn}}</a>
+                                <a href ng-click="pageAdd()">
+                                    <i class="large material-icons" style="font-size: 15px; color:#9d9d9d;">keyboard_arrow_right</i>
+                                </a>
+                            </div>
+                        </div>
                         <br>
                         <br>
                         <div >
@@ -281,7 +322,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="categoria in categorias">
+                                    <tr ng-repeat="categoria in categorias | searchFilter:searchString:page:15:this:'nombreCategoria'">
                                         <td> <input type="checkbox" ng-model="categoria.value"></td>
                                         <td>{{categoria.nombreCategoria}}</td>
                                     </tr>

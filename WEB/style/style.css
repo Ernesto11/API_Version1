@@ -182,8 +182,46 @@ body{
     padding-top: 10px;
     padding-left: 10px;
 }
-.sub_panel>h2{
+.sub_panel h2{
     color:var(--color6);
+}
+.sub_panel>.head_panel_1{
+    width:100%;
+}
+.sub_panel>.head_panel_1>.title{
+    width:75%;
+    display: inline-block;
+}
+.sub_panel>.head_panel_1>.buscar{
+    display: inline-block;
+}
+
+.sub_panel>.head_panel_1>.buscar input[type=text], select{
+    height: 30px;
+    width: 200px;
+    padding-left:10px; 
+    border: 1px solid var(--color7);
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+}
+.sub_panel>.head_panel_2{
+    width:100%;
+}
+.sub_panel>.head_panel_2>.botones{
+    width:75%;
+    display: inline-block;
+}
+.sub_panel>.head_panel_2>.page{
+    display: inline-block;
+}
+.sub_panel>.head_panel_2>.page a.active{
+    background-color: var(--color6);
+    color: var(--color3);
+}
+.sub_panel>.head_panel_2>.page .num:hover{
+    background-color: var(--color6);
+    color: var(--color3);
 }
 .btn{
     padding-left: 10px;
